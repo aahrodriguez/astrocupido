@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_05_154004) do
+ActiveRecord::Schema.define(version: 2020_03_05_155008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 2020_03_05_154004) do
     t.integer "ascendant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "interactions", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.boolean "like"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_id"], name: "index_interactions_on_receiver_id"
+    t.index ["sender_id"], name: "index_interactions_on_sender_id"
   end
 
   create_table "signs", force: :cascade do |t|
@@ -44,4 +54,6 @@ ActiveRecord::Schema.define(version: 2020_03_05_154004) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "interactions", "users", column: "receiver_id"
+  add_foreign_key "interactions", "users", column: "sender_id"
 end
