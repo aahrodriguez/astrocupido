@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_05_141709) do
+ActiveRecord::Schema.define(version: 2020_03_05_154004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "astrology_charts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "sun_id"
+    t.integer "moon_id"
+    t.integer "ascendant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "signs", force: :cascade do |t|
+    t.string "sign_name"
+    t.string "icon_url"
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
