@@ -2,8 +2,8 @@ class MessagesController < ApplicationController
 
 
   def create
-    @message = Message.new()
     @message.match = Match.find(params[:match_id])
+    @message = Message.new()
     @message.content = params(:content)
     @message.save
   end
