@@ -12,6 +12,7 @@
 
 
 
+
 ActiveRecord::Schema.define(version: 2020_03_05_174449) do
 
 
@@ -63,6 +64,14 @@ ActiveRecord::Schema.define(version: 2020_03_05_174449) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
+    t.text "description"
+    t.datetime "birthdate"
+    t.string "birth_city"
+    t.string "gender"
+    t.boolean "like_woman"
+    t.boolean "like_man"
+    t.string "current_address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
