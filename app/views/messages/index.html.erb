@@ -1,0 +1,6 @@
+<h1>Chat Test</h1>
+
+<%= simple_form_for @message do |f| %>
+  <%= f.input :text %>
+  <%= f.submit "send message", class: "btn btn-primary" %>
+<% end %>
