@@ -2,15 +2,11 @@ class MessagesController < ApplicationController
 
 
   def create
+    @message = Message.new(message_params)
     @message.match = Match.find(params[:match_id])
-    @message = Message.new()
-    @message.content = params(:content)
+    @message.sender = current_user
     @message.save
-  end
-
-  def new
-    @message = Message.new
-
+    redirect_to match_path(params[:match_id])
   end
 
   def destroy
