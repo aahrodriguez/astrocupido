@@ -8,4 +8,5 @@ class User < ApplicationRecord
   validates :username, presence: true
   geocoded_by :birth_city
   after_validation :geocode
+  has_many_attached :photos
 end
