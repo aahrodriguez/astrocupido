@@ -1,7 +1,7 @@
 require 'net/http'
 require 'uri'
 
-class VRClient
+class AstrologyService
 
   @@baseURL = "http://api.vedicrishiastro.com/v1/"
   def initialize(uid=nil,key=nil)

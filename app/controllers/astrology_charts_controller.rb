@@ -8,11 +8,12 @@ class AstrologyChartsController < ApplicationController
     @user = current_user
     @user.update(user_params)
     @astrology_chart = AstrologyChart.new
-    clientInstance = VRClient.new(ENV["ASTROLOGY_USER_ID"], ENV["ASTROLOGY_API_KEY"])
-    response = clientInstance.call("/western_horoscope/", @user.birthdate.day, @user.birthdate.month, @user.birthdate.year, @user.birthdate.hour, @user.birthdate.min, lat, lon, @user.birthdate.zone)
-    @astrology_chart.sun_id = response["planets"][0]["sign_id"]
-    @astrology_chart.moon_id = response["planets"][1]["sign_id"]
-    @astrology_chart.ascendant_id = response["ascendant"][0]["sign_id"]
+    clientInstance = AstrologyService.new(ENV["ASTROLOGY_USER_ID"], ENV["ASTROLOGY_API_KEY"])
+    response = clientInstance.call("planets/tropical", @user.birthdate.day, @user.birthdate.month, @user.birthdate.year, @user.birthdate.hour, @user.birthdate.min, @user.latitude, @user.longitude, @user.birthdate.zone)
+    response_parsed = JSON.parse(response)
+    @astrology_chart.sun_id = Sign.find_by(sign_name: response_parsed[0]["sign"])&.id
+    @astrology_chart.moon_id = Sign.find_by(sign_name: response_parsed[1]["sign"])&.id
+    @astrology_chart.ascendant_id = Sign.find_by(sign_name: response_parsed[10]["sign"])&.id
     @astrology_chart.save
   end
 
