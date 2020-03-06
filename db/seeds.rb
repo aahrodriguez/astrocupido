@@ -10,7 +10,7 @@ puts 'Creating signs...'
 signs_array = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]
 
 signs_array.each do |sign|
-  Sign.create!(sign_name: sign)
+  Sign.find_or_create_by!(sign_name: sign)
 end
 
 puts 'Signs created!'
@@ -19,5 +19,7 @@ puts "Create Brazilian states"
 
 states_array = ["Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"]
 states_array.each do |state_br|
-  State.create(state_name: state_br)
+  State.find_or_create_by!(state_name: state_br)
 end
+
+puts "Brazilian states created"
