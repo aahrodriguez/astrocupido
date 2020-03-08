@@ -1,0 +1,2 @@
+class SignMatch < ApplicationRecord
+end

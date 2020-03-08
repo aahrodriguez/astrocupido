@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_05_213950) do
+ActiveRecord::Schema.define(version: 2020_03_06_213420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,16 @@ ActiveRecord::Schema.define(version: 2020_03_05_213950) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sign_matches", force: :cascade do |t|
+    t.bigint "sign_one_id"
+    t.bigint "sign_two_id"
+    t.integer "percentage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sign_one_id"], name: "index_sign_matches_on_sign_one_id"
+    t.index ["sign_two_id"], name: "index_sign_matches_on_sign_two_id"
   end
 
   create_table "signs", force: :cascade do |t|
@@ -86,4 +96,6 @@ ActiveRecord::Schema.define(version: 2020_03_05_213950) do
 
   add_foreign_key "interactions", "users", column: "receiver_id"
   add_foreign_key "interactions", "users", column: "sender_id"
+  add_foreign_key "sign_matches", "signs", column: "sign_one_id"
+  add_foreign_key "sign_matches", "signs", column: "sign_two_id"
 end
