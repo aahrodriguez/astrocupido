@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2020_03_06_213420) do
-
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,7 +120,7 @@ ActiveRecord::Schema.define(version: 2020_03_06_213420) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "interactions", "users", column: "receiver_id"
   add_foreign_key "interactions", "users", column: "sender_id"
+  add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "sign_matches", "signs", column: "sign_one_id"
   add_foreign_key "sign_matches", "signs", column: "sign_two_id"
-  add_foreign_key "messages", "users", column: "sender_id"
 end
