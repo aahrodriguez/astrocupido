@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
 
   resources :matches, only: [:show, :create, :destroy] do
-   resources :messages, only: [:create, :destroy]
+   resources :messages, only: [:create]
   end
+  resources :messages, only: [:destroy]
+
 
 end
