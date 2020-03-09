@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :astrology_charts, only: [:new, :create]
+  resources :astrology_charts, only: [:new, :create, :edit, :update]
 
 
   resources :matches, only: [:show, :create, :destroy] do

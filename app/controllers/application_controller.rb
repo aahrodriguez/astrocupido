@@ -8,4 +8,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:username, :email, :password, :current_password) }
   end
 
+  def after_sign_up_path_for(resource_or_scope)
+    new_astrology_chart_path
+  end
 end
