@@ -62,8 +62,5 @@ class AstrologyChartsController < ApplicationController
     params.permit(:birthdate, :birth_city)
   end
 
-  def astrology_chart_api
-  end
-
 end
 

@@ -1,2 +1,3 @@
 class Interaction < ApplicationRecord
+
 end
