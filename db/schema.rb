@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_06_182110) do
+
+ActiveRecord::Schema.define(version: 2020_03_06_213420) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +73,16 @@ ActiveRecord::Schema.define(version: 2020_03_06_182110) do
     t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
+  create_table "sign_matches", force: :cascade do |t|
+    t.bigint "sign_one_id"
+    t.bigint "sign_two_id"
+    t.integer "percentage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sign_one_id"], name: "index_sign_matches_on_sign_one_id"
+    t.index ["sign_two_id"], name: "index_sign_matches_on_sign_two_id"
+  end
+
   create_table "signs", force: :cascade do |t|
     t.string "sign_name"
     t.string "icon_url"
@@ -110,5 +122,7 @@ ActiveRecord::Schema.define(version: 2020_03_06_182110) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "interactions", "users", column: "receiver_id"
   add_foreign_key "interactions", "users", column: "sender_id"
+  add_foreign_key "sign_matches", "signs", column: "sign_one_id"
+  add_foreign_key "sign_matches", "signs", column: "sign_two_id"
   add_foreign_key "messages", "users", column: "sender_id"
 end

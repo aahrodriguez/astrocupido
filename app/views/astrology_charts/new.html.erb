@@ -1,0 +1,11 @@
+<%= form_with(url: {action: :create}, method: :post) do %>
+
+ <%= text_field_tag :birthdate, "", class: "datepicker" %>
+
+  <%= label_tag :birth_city %>
+  <%= text_field_tag :birth_city %>
+
+  <%= select_tag :state_name, options_for_select(@states) %>
+
+  <%= submit_tag %>
+<% end %>
