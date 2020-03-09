@@ -11,7 +11,7 @@
 </div>
 
 <div class=" pl-5 ml-5 send-messages">
-  <%= simple_form_for [ @match, @message ], html: { class: 'w-100 row' } do |form| %>
+  <%= simple_form_for [ @match, @message ], html: { class: 'w-100 row' }, remote: true do |form| %>
     <div class="col-10">
       <%= form.input :content , placeholder: "Chat", label: false %>
     </div>
@@ -20,3 +20,17 @@
     </div>
 <% end %>
 </div>
+
+<% content_for :after_js do %>
+  <script>
+    App['match_channel_<%= @match.id %>'] = App.cable.subscriptions.create({ channel: 'MatchChatChannel', id: '<%= @match.id %>' }, {
+      received: (data) => {
+        const messages = document.querySelector('.messages');
+        messagesContainer.insertAdjancentHTML('beforeend', data.message_partial);
+        // called when data is broadcast in the cable
+
+      }
+    });
+
+  </script>
+<% end %>

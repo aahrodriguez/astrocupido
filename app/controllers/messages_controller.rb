@@ -6,7 +6,10 @@ class MessagesController < ApplicationController
     @message.match = Match.find(params[:match_id])
     @message.sender = current_user
     @message.save
-    redirect_to match_path(params[:match_id])
+    ActionCable.server.broadcast("match_chat:match_channel_#{@message.match.id}", {
+      message_partial: render(partial: "messages/message", locals: { message: @message })
+    })
+    # redirect_to match_path(params[:match_id])
   end
 
   def destroy

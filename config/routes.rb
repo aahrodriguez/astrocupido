@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   end
   resources :messages, only: [:destroy]
 
-
+mount ActionCable.server, at: '/cable'
 end
