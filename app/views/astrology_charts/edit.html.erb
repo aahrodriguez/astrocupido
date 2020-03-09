@@ -5,9 +5,9 @@
   <%= label_tag :birth_city %>
   <%= text_field_tag :birth_city %>
 
-  <%= select_tag :state_name, options_for_select(@states) %>
+  <%= f.input :state_name, collection: @states.state_name %>
 
 
-  <%= submit_tag %>
+  <%= f.button :submit, "Update" %>
 
 <% end %>

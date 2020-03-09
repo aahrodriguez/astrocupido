@@ -29,5 +29,21 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
+    @states = State.all
   end
+
+  def update
+    raise
+    @user = current_user
+    @user.find_by(user_params)
+    @user.save
+  end
+
+
+  private
+
+  def user_params
+    params.require(:user).permit(:username, :birth_date, :birth_city, :password )
+  end
+
 end

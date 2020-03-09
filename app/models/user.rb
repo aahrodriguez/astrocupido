@@ -9,6 +9,7 @@ class User < ApplicationRecord
   geocoded_by :birth_city
   after_validation :geocode
   has_many_attached :photos
+  has_many :interactions
 
   def matches
     # current_user.matches ==> Match.where(user_one: current_user).or(user_two: current_user)
