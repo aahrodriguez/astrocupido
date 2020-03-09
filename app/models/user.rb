@@ -10,6 +10,8 @@ class User < ApplicationRecord
   after_validation :geocode
   has_many_attached :photos
   has_many :interactions
+  has_one :state
+  has_one :astrology_chart
 
   def matches
     # current_user.matches ==> Match.where(user_one: current_user).or(user_two: current_user)

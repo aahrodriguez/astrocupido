@@ -8,7 +8,7 @@
       <div class="form-inputs">
         <%= f.input :email, required: true, autofocus: true %>
 
-         <%= label_tag :meu_nome %>
+        <%= label_tag :meu_nome %>
         <%= text_field_tag :username %>
 
         <%= label_tag :birth_date %>
@@ -17,7 +17,8 @@
         <%= label_tag :birth_city %>
         <%= text_field_tag :birth_city %>
 
-        <%= f.input :state_name, collection: State.all %>
+        <%= f.input :state, collection: @states.pluck(:state_name, :id) %>
+
 
         <%= f.input :password,
                     hint: "leave it blank if you don't want to change it",
@@ -42,16 +43,3 @@
 
   </div>
 
-  <%= form_with(url: {action: :create}, method: :post) do %>
-
-   <%= text_field_tag :birthdate, "", class: "datepicker" %>
-
-    <%= label_tag :birth_city %>
-    <%= text_field_tag :birth_city %>
-
-    <%= f.input :state_name, collection: @states.state_name %>
-
-
-    <%= f.button :submit, "Update" %>
-
-  <% end %>

@@ -1,4 +1,4 @@
-<%= form_with(url: {action: :create}, method: :post) do %>
+<%= form_with(url: {action: :create}, method: :post, remote: false) do %>
 
  <%= text_field_tag :birthdate, "", class: "datepicker" %>
 

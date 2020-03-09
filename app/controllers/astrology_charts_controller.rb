@@ -28,6 +28,7 @@ class AstrologyChartsController < ApplicationController
     @astrology_chart.moon_id = Sign.find_by(sign_name: response_parsed[1]["sign"])&.id
     @astrology_chart.ascendant_id = Sign.find_by(sign_name: response_parsed[10]["sign"])&.id
     @astrology_chart.save
+    redirect_to all_users_path
   end
 
   def edit
