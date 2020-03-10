@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    # users = User.where.not(id: current_user.id)
-
+    @users = User.where.not(id: current_user.id)
     # # we have a user
     # # we gonna get their interactions (has_many / belongs_to)
     # # we gonna get the senders from these interactions
