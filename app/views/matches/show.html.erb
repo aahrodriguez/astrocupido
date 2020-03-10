@@ -1,22 +1,20 @@
-<div class= "container" >
-  chat with <%= @match.user_one == current_user ?  @match.user_two.email : @match.user_one.email  %>
-  <div class= "chat">
-<% @match.messages.each do |message| %>
-  <div class= "d-flex justify-content-<%= current_user == message.sender ? 'end' : 'start' %>  ">
-    <p> <%= message.sender.email %> </p>
-    <p> <%= message.content %></p>
-  </div >
-<% end %>
-</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div class="chat-header"><h4><%#= ROBERTO @match %></h4></div>
+      <div class="messages">
+        <% @match.messages.each do |message| %>
+        <%= render "messages/message", message: message %>
+        <% end %>
+      </div>
+      <div id="creat-message">
+        <%= simple_form_for [@match, Message.new], remote: true do |f| %>
+        <%= f.input :content, label: false %>
+        <%= f.submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class=" pl-5 ml-5 send-messages">
-  <%= simple_form_for [ @match, @message ], html: { class: 'w-100 row' } do |form| %>
-    <div class="col-10">
-      <%= form.input :content , placeholder: "Chat", label: false %>
-    </div>
-    <div class="col align-bottom">
-      <%= form.button :submit, "Send", class: "btn btn-primary mt-5" %>
-    </div>
-<% end %>
-</div>
+
