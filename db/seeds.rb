@@ -178,7 +178,7 @@ def get_randomuser
   user_parsed['results'][0]
 end
 
-def get_address_sp
+def get_address
   array_ceps = ["03805-160", "03045-020", "04932-160", "04713-020", "08440-200", "03040-050", "08440-450", "02443-060", "02345-070",
                "04856-330", "05467-000", "04015-011", "03948-010", "05304-010", "08021-520", "05376-190", "05347-015", "04194-285",
                "08420-170", "02990-322", "05056-030", "08382-505", "04675-010", "03578-225", "03125-070", "03952-010", "05101-225",
@@ -191,17 +191,28 @@ def get_address_sp
   user_serialized = open(url).read
   user_parsed = JSON.parse(user_serialized)
   info_cep = user_parsed['data']
-  return "#{info_cep['address']}, #{info_cep['district']}"
+  info_cep
 end
 
 random_user = get_randomuser
+user_location = get_address
+
 user = User.new
 user.username = "#{random_user['name']['first']} #{random_user['name']['last']}"
 user.email = random_user['email']
 user.gender = random_user['gender']
 user.birthdate = random_user['dob']['date']
-user.current_address = get_address_sp
-user.birth_city = "São Paulo, São Paulo"
+user.current_address = "#{user_location['address']}, #{user_location['district']}"
+user.state_id = State.find_by(state_name: "#{user_location['state_name']}").id
+user.birth_city = "#{user_location['city']}, #{user_location['state_name']}"
 user.password = 123123
-user.gender == 'male' ? user.like_woman = true && user.like_man = false : user.like_woman = false && user.like_man = true
+if user.gender == "male"
+  user.like_woman = true
+  user.like_man = false
+else
+  user.like_woman = false
+  user.like_man = true
+end
+# photo = URI.open(random_user['picture']['large'])
+# user.photo.attach(io: photo, filename: "#{Time.now.to_i}.jpg", content_type: 'image/jpeg')
 user.save!
