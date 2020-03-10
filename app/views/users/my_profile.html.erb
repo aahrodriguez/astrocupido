@@ -1,0 +1,11 @@
+<div class="container">
+
+<h2><%= (@user.username).capitalize %><%= @user.astrology_chart.birthdate %></h2>
+<p><%= @user.description %></p>
+<p><%= @user.gender %></p>
+
+<%= link_to "Preferencias", registration_path(@user) %></p>
+<%= link_to "Dados", edit_user_path(current_user) %></p>
+
+</div>
+

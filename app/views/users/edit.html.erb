@@ -1,0 +1,45 @@
+<div class="container">
+
+    <h2><%= @user.username %>, você deseja editar suas informações?</h2>
+
+    <%= simple_form_for(@user, as: @user, url: edit_my_user_path, html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.input :email, required: true, autofocus: true %>
+
+        <%= label_tag :meu_nome %>
+        <%= text_field_tag :username %>
+
+        <%= label_tag :birth_date %>
+        <%= text_field_tag :birthdate, "", class: "datepicker" %>
+
+        <%= label_tag :birth_city %>
+        <%= text_field_tag :birth_city %>
+
+        <%= f.input :state, collection: @states.pluck(:state_name, :id) %>
+
+
+        <%= f.input :password,
+                    hint: "leave it blank if you don't want to change it",
+                    required: false,
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                    required: false,
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :current_password,
+                    hint: "we need your current password to confirm your changes",
+                    required: true,
+                    input_html: { autocomplete: "current-password" } %>
+      </div>
+
+
+      <%= f.button :submit, "Update" %>
+    <% end %>
+
+    <h3>Cancel my account</h3>
+
+    <p>Unhappy? <%= link_to "Cancel my account", registration_path(@user), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+  </div>
+

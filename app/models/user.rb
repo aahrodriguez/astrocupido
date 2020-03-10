@@ -6,9 +6,10 @@ class User < ApplicationRecord
   has_many :sent_messages, :class_name => "Message", :foreign_key => "sender_id"
   has_many :received_messages, :class_name => "Message", :foreign_key => "receiver_id"
   validates :username, presence: true
-  geocoded_by :birth_city
-  after_validation :geocode
   has_many_attached :photos
+  has_many :interactions
+  belongs_to :state, optional: true
+  has_one :astrology_chart
 
   def matches
     # current_user.matches ==> Match.where(user_one: current_user).or(user_two: current_user)
