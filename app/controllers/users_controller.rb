@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def index
+
     # we have a user
     # we gonna get their interactions (has_many / belongs_to)
     # we gonna get the senders from these interactions
@@ -8,6 +9,7 @@ class UsersController < ApplicationController
     # users = User.where.not(id: current_user.id).left_joins(:interactions)
     # users = users.where(interactions: {like: true, receiver: current_user})
     #                          .or(users.where.not(interactions: {sender: current_user}))
+    @users = User.where.not(id: current_user.id)
     # users.reject! { |user| user.interactions.senders.include? current_user }
 
     # users = users.sort_by { |user|
