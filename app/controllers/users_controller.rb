@@ -1,12 +1,15 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.where.not(id: current_user.id)
-    # # we have a user
-    # # we gonna get their interactions (has_many / belongs_to)
-    # # we gonna get the senders from these interactions
-    # # we gonna check if any of therse senders is the current_user
 
+    # we have a user
+    # we gonna get their interactions (has_many / belongs_to)
+    # we gonna get the senders from these interactions
+    # we gonna check if any of therse senders is the current_user
+    # users = User.where.not(id: current_user.id).left_joins(:interactions)
+    # users = users.where(interactions: {like: true, receiver: current_user})
+    #                          .or(users.where.not(interactions: {sender: current_user}))
+    @users = User.where.not(id: current_user.id)
     # users.reject! { |user| user.interactions.senders.include? current_user }
 
     # users = users.sort_by { |user|
@@ -14,7 +17,7 @@ class UsersController < ApplicationController
     #   + (SignMatch.find_by(s1: current_user.astrology_chart.moon_id, s2: user.astrology_chart.moon_id).percentage * 2)
     #   + (SignMatch.find_by(s1: current_user.astrology_chart.ascendant_id, s2: user.astrology_chart.ascendant_id).percentage) }
 
-    # @best_match = users.first
+    # @best_match = users
   end
 
   def show
@@ -29,20 +32,25 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
-    @states = State.all
   end
 
   def update
     @user = current_user
-    @user.find_by(user_params)
-    @user.save
+    if @user.update(user_update_params)
+      redirect_to all_users_path
+    else
+      render :edit
+    end
   end
-
 
   private
 
   def user_params
-    params.require(:user).permit(:username, :birth_date, :birth_city, :password )
+    params.require(:user).permit(:username, :email, :password )
+  end
+
+  def user_update_params
+    params.require(:user).permit(:username, :email, :password )
   end
 
 end

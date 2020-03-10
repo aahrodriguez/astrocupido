@@ -1,5 +1,3 @@
 class InteractionsController < ApplicationController
 
-
-
 end

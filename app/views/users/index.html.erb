@@ -1,5 +1,4 @@
 <div class="container">
-
   <%@users.each do |user| %>
     <% if user.photos.attached? %>
       <%= cl_image_tag user.photos.key, crop: :fill %>
@@ -19,5 +18,4 @@
       </span>
     </div>
   <% end %>
-
 </div>
