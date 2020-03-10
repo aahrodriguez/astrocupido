@@ -34,7 +34,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    raise
     @user = current_user
     @user.find_by(user_params)
     @user.save

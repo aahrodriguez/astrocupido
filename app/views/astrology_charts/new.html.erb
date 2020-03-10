@@ -1,13 +1,12 @@
-<%= form_with(url: {action: :create}, method: :post, remote: false) do %>
+<%= simple_form_for @astrology_chart do |f| %>
 
- <%= text_field_tag :birthdate, "", class: "datepicker" %>
+ <%= f.input :birthdate, input_html: { class: "datepicker" }, as: :string %>
 
-  <%= label_tag :birth_city %>
-  <%= text_field_tag :birth_city %>
+  <%= f.input :birth_city %>
 
-  <%= select_tag :state_name, options_for_select(@states) %>
+  <%= f.input :state_id, collection: @states %>
 
 
-  <%= submit_tag %>
+  <%= f.submit %>
 
 <% end %>
