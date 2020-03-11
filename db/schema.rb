@@ -121,7 +121,6 @@ ActiveRecord::Schema.define(version: 2020_03_10_144300) do
     t.float "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["state_id"], name: "index_users_on_state_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

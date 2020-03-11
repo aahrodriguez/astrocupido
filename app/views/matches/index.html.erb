@@ -1,14 +1,10 @@
 <% @matches.each do |match| %>
-
-
-
-  <h2> <%= match.user_two.email %></h2>
-
-
-
-  <h2> <%= match.user_one.email %></h2>
-
-  <h2><%= match.messages.last.content %></h2>
+  <%= link_to match_path(match.id) do %>
+    <div class="card">
+      <h2> <%= match.user_two.email %></h2>
+      <h2><%= match.messages.last.content %></h2>
+    </div>
+  <% end %>
 <% end %>
 
 

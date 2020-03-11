@@ -8,10 +8,14 @@ class User < ApplicationRecord
   geocoded_by :birth_city
   after_validation :geocode
   validates :username, presence: true
+  has_one_attached :avatar
   has_many_attached :photos
   has_many :interactions
   belongs_to :state, optional: true
   has_one :astrology_chart
 
-
+  def matches
+    Match.where(user_one_id: self.id).or(Match.where(user_two_id: self.id))
+    # Match.where('user_one_id = :id OR user_two_id = :id', id: self.id)
+  end
 end
