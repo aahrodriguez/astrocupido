@@ -191,7 +191,8 @@ def get_address
   user_parsed = JSON.parse(user_serialized)
   info_cep = user_parsed['data']
   info_cep
-  
+end
+
 random_user = get_randomuser
 user_location = get_address
 
