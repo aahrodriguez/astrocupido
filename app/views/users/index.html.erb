@@ -2,7 +2,7 @@
   <div class="margin-container">
   <%@users.each do |user| %>
     <% if user.photos.attached? %>
-      <%= cl_image_tag user.photos.key, crop: :fill %>
+      <%= cl_image_tag user.avatar.key, crop: :fill %>
     <% elsif user.gender == "male" %>
       <%= cl_image_tag "https://res.cloudinary.com/depkgd9tg/image/upload/v1583866471/rqujcnufwkhrrkmdgkku.png", height: 100, witdh: 100, crop: :fill %>
     <% else %>

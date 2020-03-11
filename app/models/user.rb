@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :sent_messages, :class_name => "Message", :foreign_key => "sender_id"
   has_many :received_messages, :class_name => "Message", :foreign_key => "receiver_id"
   validates :username, presence: true
+  has_one_attached :avatar
   has_many_attached :photos
   has_many :interactions
   belongs_to :state, optional: true
