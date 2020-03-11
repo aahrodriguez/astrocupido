@@ -19,10 +19,16 @@
           <img class="d-block" id="image-carousel" src='' alt="<% @best_match.id %>">
             <div class="user-details"><%= @best_match.username %></div>
         <% elsif @best_match.gender == "male" %>
-          <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866471/rqujcnufwkhrrkmdgkku.png" alt="<% @best_match.id %>">
+          <%= link_to user_path(@best_match) do %>
+            <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866471/rqujcnufwkhrrkmdgkku.png" alt="<% @best_match.id %>">
+            <%#= image_tag "image" %>
+          <% end %>
             <div class="user-details"><%= @best_match.username %></div>
         <% else %>
-          <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866457/hj6sf5ea59kq5xhi19ew.png" alt="<% @best_match.id %>">
+          <%= link_to user_path(@best_match) do %>
+             <%#= image_tag "image" %>
+             <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866457/hj6sf5ea59kq5xhi19ew.png" alt="<% @best_match.id %>">
+          <% end %>
             <div class="user-details"><%= @best_match.username %></div>
         </div>
         <% end %>

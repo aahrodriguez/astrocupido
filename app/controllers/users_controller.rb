@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(username: params[:slug])
+    @user = User.find(params[:id])
   end
 
   def my_profile
