@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "all_users", to: "users#index"
   put "edit_my_user", to: "users#update"
 
-  resources :interactions, olny: [:new, :create]
+  resources :interactions, only: [:new, :create]
 
   resources :astrology_charts, only: [:new, :create, :edit, :update]
 
