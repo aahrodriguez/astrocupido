@@ -213,4 +213,4 @@ puts 'Memory created!'
 # end
 # photo = URI.open(random_user['picture']['large'])
 # user.photo.attach(io: photo, filename: "#{Time.now.to_i}.jpg", content_type: 'image/jpeg')
-user.save!
+# user.save!
