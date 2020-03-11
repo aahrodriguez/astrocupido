@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :astrology_charts, only: [:new, :create, :edit, :update]
 
 
-  resources :matches, only: [:show, :create, :destroy] do
+  resources :matches, only: [:show, :create, :destroy, :index] do
    resources :messages, only: [:create]
   end
   resources :messages, only: [:destroy]

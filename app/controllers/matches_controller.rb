@@ -1,14 +1,10 @@
 class MatchesController < ApplicationController
 
-def show
-  @match = Match.find(params[:id])
-  @message = Message.new
-end
+  def index
+    @matches = current_user.matches
+  end
 
-private
-
-def message_params
-  params.require(:match).permit(:match_id)
-end
-
+  def show
+    @match = Match.find(params[:id])
+  end
 end
