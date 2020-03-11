@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+
   def index
     # Pra nao quebrar na master, linha nao esta correta
     users = User.where.not(id: current_user.id).joins('LEFT JOIN interactions ON interactions.sender_id = users.id OR interactions.receiver_id = users.id')
@@ -13,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(username: params[:slug])
+    @user = User.find(params[:id])
   end
 
   def my_profile

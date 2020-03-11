@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :dispatch_user
+  include Pundit
+
 
   # For additional fields in app/views/devise/registrations/new.html.erb and edit.html.erb
   def configure_permitted_parameters
@@ -15,5 +17,11 @@ class ApplicationController < ActionController::Base
     path = new_astrology_chart_path unless current_user.astrology_chart.present?
     path = all_users_path if request.path == root_path
     redirect_to path unless path.nil? || path == request.path
+  end
+
+  private
+
+  def skip_pundit?
+    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
 end
