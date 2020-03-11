@@ -167,6 +167,17 @@ SignMatch.find_or_create_by!(sign_one_id: 12, sign_two_id: 12, percentage: 80)
 puts 'Matches created!'
 puts 'Memory created!'
 
+def get_randomuser
+  key = "CQUK-0U2E-69AP-K69U"
+  ref = "htc3lz0n"
+  url = "https://randomuser.me/api/?key=#{key}&ref=#{ref}"
+
+  user_serialized = open(url).read
+
+  user_parsed = JSON.parse(user_serialized)
+  user_parsed['results'][0]
+end
+
 def get_address
   array_ceps = ["03805-160", "03045-020", "04932-160", "04713-020", "08440-200", "03040-050", "08440-450", "02443-060", "02345-070",
                "04856-330", "05467-000", "04015-011", "03948-010", "05304-010", "08021-520", "05376-190", "05347-015", "04194-285",
