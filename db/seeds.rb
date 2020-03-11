@@ -187,13 +187,11 @@ def get_address
   cep = array_ceps.sample
   key = "4ed7f5f0f2ccd6cc919b860d606d4b12"
   url = "http://geradorapp.com/index.php/api/v1/cep/search/#{cep}?token=#{key}"
-
   user_serialized = open(url).read
   user_parsed = JSON.parse(user_serialized)
   info_cep = user_parsed['data']
   info_cep
-end
-
+  
 random_user = get_randomuser
 user_location = get_address
 

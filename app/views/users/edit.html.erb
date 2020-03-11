@@ -1,0 +1,29 @@
+<div class="mobile-container">
+  <div class="margin-container">
+    <h2><%= @user.username.capitalize %>, você deseja editar suas informações?</h2>
+
+    <%= simple_form_for(@user, as: @user, url: edit_my_user_path, html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.input :email, required: true, autofocus: true %>
+
+        <%= f.input :username %>
+
+        <%= f.input :password,
+                    hint: "leave it blank if you don't want to change it",
+                    required: false,
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                    required: false,
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :current_password,
+                    hint: "we need your current password to confirm your changes",
+                    required: true,
+                    input_html: { autocomplete: "current-password" } %>
+
+
+      <%= f.button :submit, "Update" %>
+    <% end %>
+  </div>
+</div>
