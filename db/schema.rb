@@ -111,10 +111,14 @@ ActiveRecord::Schema.define(version: 2020_03_10_144300) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.text "description"
+    t.datetime "birthdate"
+    t.string "birth_city"
     t.string "gender"
     t.boolean "like_woman"
     t.boolean "like_man"
     t.string "current_address"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["state_id"], name: "index_users_on_state_id"
