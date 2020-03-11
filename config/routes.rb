@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home'
+  root to: 'users#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :astrology_charts, only: [:new, :create]
+  resources :users, only: [:show, :edit]
+  get 'my_profile', to: 'users#my_profile'
+  get "all_users", to: "users#index"
+  put "edit_my_user", to: "users#update"
+
+  resources :astrology_charts, only: [:new, :create, :edit, :update]
 
 
   resources :matches, only: [:show, :create, :destroy, :index] do

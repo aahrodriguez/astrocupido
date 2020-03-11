@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_06_213420) do
+ActiveRecord::Schema.define(version: 2020_03_10_144300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,12 @@ ActiveRecord::Schema.define(version: 2020_03_06_213420) do
     t.integer "ascendant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "birthdate"
+    t.string "birth_city"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "state_id"
+    t.index ["state_id"], name: "index_astrology_charts_on_state_id"
   end
 
   create_table "interactions", force: :cascade do |t|
@@ -118,6 +124,7 @@ ActiveRecord::Schema.define(version: 2020_03_06_213420) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "astrology_charts", "states"
   add_foreign_key "interactions", "users", column: "receiver_id"
   add_foreign_key "interactions", "users", column: "sender_id"
   add_foreign_key "messages", "users", column: "sender_id"

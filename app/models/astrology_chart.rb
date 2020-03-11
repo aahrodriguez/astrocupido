@@ -1,3 +1,8 @@
 class AstrologyChart < ApplicationRecord
-  has_many :signs
+  geocoded_by :birth_city
+  after_validation :geocode
+  has_many :sign
+  belongs_to :user
+  belongs_to :state
+
 end

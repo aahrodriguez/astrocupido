@@ -1,0 +1,21 @@
+<div class="container">
+  <%@users.each do |user| %>
+    <% if user.photos.attached? %>
+      <%= cl_image_tag user.photos.key, crop: :fill %>
+    <% elsif user.gender == "male" %>
+      <%= cl_image_tag "https://res.cloudinary.com/depkgd9tg/image/upload/v1583866471/rqujcnufwkhrrkmdgkku.png", height: 200, witdh: 200, crop: :fill %>
+    <% else %>
+      <%= cl_image_tag "https://res.cloudinary.com/depkgd9tg/image/upload/v1583866457/hj6sf5ea59kq5xhi19ew.png", height: 200, witdh: 200, crop: :fill %>
+    <% end %>
+    <h1><%= user.username %></h1>
+    <p><%= user.description %></p>
+    <p><%= distance_of_time_in_words(DateTime.now, user.astrology_chart.birthdate)%></p>
+    <div>
+      <span>
+        <%= Sign.find(user.astrology_chart.sun_id).sign_name %> |
+        <%= Sign.find(user.astrology_chart.moon_id).sign_name %> |
+        <%= Sign.find(user.astrology_chart.ascendant_id).sign_name %>
+      </span>
+    </div>
+  <% end %>
+</div>
