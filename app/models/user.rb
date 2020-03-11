@@ -15,7 +15,11 @@ class User < ApplicationRecord
   has_one :astrology_chart
 
   def matches
-    Match.where(user_one_id: self.id).or(Match.where(user_two_id: self.id))
-    # Match.where('user_one_id = :id OR user_two_id = :id', id: self.id)
+    # current_user.matches ==> Match.where(user_one: current_user).or(user_two: current_user)
+    Match.where(user_one: self).or(Match.where(user_two: self))
+  end
+
+  def interactions
+    Interaction.where(sender: self).or(Interaction.where(receiver: self))
   end
 end
