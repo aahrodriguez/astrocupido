@@ -8,10 +8,12 @@ Rails.application.routes.draw do
   get "all_users", to: "users#index"
   put "edit_my_user", to: "users#update"
 
+  resources :interactions, only: [:new, :create]
+
   resources :astrology_charts, only: [:new, :create, :edit, :update]
 
 
-  resources :matches, only: [:show, :create, :destroy] do
+  resources :matches, only: [:show, :create, :destroy, :index] do
    resources :messages, only: [:create]
   end
   resources :messages, only: [:destroy]
