@@ -1,28 +1,21 @@
 class UsersController < ApplicationController
 
   def index
+    # Pra nao quebrar na master, linha nao esta correta
+    users = User.all
+    # users = User.where.not(id: current_user.id).joins('LEFT JOIN interactions ON interactions.sender_id = users.id OR interactions.receiver_id = users.id')
 
-    # we have a user
-    # we gonna get their interactions (has_many / belongs_to)
-    # we gonna get the senders from these interactions
-    # we gonna check if any of therse senders is the current_user
-    # users = User.where.not(id: current_user.id).left_joins(:interactions)
-    # users = users.where(interactions: {like: true, receiver: current_user})
-    #                          .or(users.where.not(interactions: {sender: current_user}))
-    # @users = User.where.not(id: current_user.id)
-      @users = User.all
+    # users =  users.reject { |user| user.interactions.pluck(:sender_id).include? current_user.id }
+
     # users = users.sort_by { |user|
-    #     (SignMatch.find_by(s1: current_user.astrology_chart.sun_id, s2: user.astrology_chart.sun_id).percentage * 3)
-    #   + (SignMatch.find_by(s1: current_user.astrology_chart.moon_id, s2: user.astrology_chart.moon_id).percentage * 2)
-    #   + (SignMatch.find_by(s1: current_user.astrology_chart.ascendant_id, s2: user.astrology_chart.ascendant_id).percentage) }
-
-    # @best_match = users
+    #      (SignMatch.find_by(sign_one_id: current_user.astrology_chart.sun_id, sign_two_id: user.astrology_chart.sun_id).percentage * 3)
+    #    + (SignMatch.find_by(sign_one_id: current_user.astrology_chart.moon_id, sign_two_id: user.astrology_chart.moon_id).percentage * 2)
+    #    + (SignMatch.find_by(sign_one_id: current_user.astrology_chart.ascendant_id, sign_two_id: user.astrology_chart.ascendant_id).percentage) }
+    @best_match = users.first
   end
 
   def show
-    # public page of the user
     @user = User.find_by(username: params[:slug])
-
   end
 
   def my_profile

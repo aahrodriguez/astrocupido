@@ -1,38 +1,32 @@
-<%#= distance_of_time_in_words(DateTime.now, user.astrology_chart.birthdate)%>
-<%#= Sign.find(user.astrology_chart.sun_id).sign_name %> |
-<%#= Sign.find(user.astrology_chart.moon_id).sign_name %> |
-<%#= Sign.find(user.astrology_chart.ascendant_id).sign_name %>
-
-<% @users.each do |user| %>
-  <div class="slide showing" data-id="<% user.id %>">
-    <li><% user.username %></li>
-  </div>
-<% end %>
-
-    <div class="d-flex flex-column flex-md-row align-itens-center p-3 px-md-4 mb-3">
-      <div class="container">
-        <ul id="slides">
-          <% @users.each_with_index do |user, i| %>
-            <li class="slide <%= 'showing' if i==0 %>" data-id="<% user.id %>">
-              <% if user.photos.attached? %>
-                <div class="image-carousel" style="background-image: url('<%= asset_url user.photos.key %>')" >
-              <% elsif user.gender == "male" %>
-                <div class="image-carousel" style="background-image: url('https://res.cloudinary.com/depkgd9tg/image/upload/v1583866471/rqujcnufwkhrrkmdgkku.png')">
-              <% else %>
-                <div class="image-carousel" style="background-image: url('https://res.cloudinary.com/depkgd9tg/image/upload/v1583866457/hj6sf5ea59kq5xhi19ew.png')">
-              <% end %>
-              </div>
-              <div class="user-details"><%= user.username %></div>
-            </li>
-          <% end %>
-        </ul>
-
-    <div id="slide-controls">
-      <div class="container">
-        <div id="decline" class="d-inline-block"><i class="fas fa-times-circle fa-4x"></i></div>
-        <div id="approve" class="d-inline-block"><i class="fas fa-heart fa-4x"></i></div>
-      </div>
+<div id="carouselExampleIndicators" class="carousel slide mt-40" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <div class="row">
+      <span id="decline" data-target="#carouselExampleIndicators" data-slide-to="0"><i class="fas fa-times-circle fa-2x"></i><span>
+      <span id="approve" data-target="#carouselExampleIndicators" data-slide-to="1"><i class="fas fa-heart fa-2x"></i><span>
     </div>
+  </ol>
+  <div class="carousel-inner">
+      <div class="carousel-item active">
+      <% if @best_match.photos.attached? %>
+        <img class="d-block" id="image-carousel" src='' alt="<% @best_match.id %>">
+          <div class="user-details"><%= @best_match.username %></div>
+      <% elsif @best_match.gender == "male" %>
+        <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866471/rqujcnufwkhrrkmdgkku.png" alt="<% @best_match.id %>">
+          <div class="user-details"><%= @best_match.username %></div>
+      <% else %>
+        <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866457/hj6sf5ea59kq5xhi19ew.png" alt="<% @best_match.id %>">
+          <div class="user-details"><%= @best_match.username %></div>
+      </div>
+      <% end %>
   </div>
 </div>
 
+<script>
+  decline.addEventListener('click', (event) => {
+    fetch("<%= new_interaction_path(like: false, receiver: @best_match.id) %>")
+  })
+
+  approve.addEventListener('click', (event) => {
+    fetch("<%= new_interaction_path(like: true, receiver: @best_match.id) %>")
+  })
+</script>

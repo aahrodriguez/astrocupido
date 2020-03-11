@@ -20,16 +20,14 @@
               <li class="nav-item active">
                 <%= link_to "My Matches", "#", class: "text-dark mr-3" %>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          My Account
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <%= link_to "Preferences", "#", class: "dropdown-item" %>
-                  <%= link_to "My Profile", my_profile_path, class: "dropdown-item" %>
-                  <%= link_to "Configuration", edit_user_path(current_user), class: "dropdown-item" %>
-                  <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-                </div>
+              <li class="nav-item active">
+                <%= link_to "My Profile", my_profile_path, class: "dropdown-item" %>
+              </li>
+              <li class="nav-item active">
+                <%= link_to "Configuration", edit_user_path(current_user), class: "dropdown-item" %>
+              </li>
+              <li class="nav-item active">
+                <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </li>
             </ul>
           </nav>
@@ -37,6 +35,7 @@
           <%= link_to "Sign in", all_users_path, class: "btn btn-secondary mr-3" %>
           <%= link_to "Sign up", all_users_path, class: "btn btn-outline-primary" %>
         <% end %>
-              </ul>
-            </div>
-          </div>
+      </ul>
+    </div>
+  </div>
+</div>

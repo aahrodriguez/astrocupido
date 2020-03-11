@@ -13,6 +13,10 @@ class User < ApplicationRecord
 
   def matches
     # current_user.matches ==> Match.where(user_one: current_user).or(user_two: current_user)
-    Match.where(user_one: self).or(user_two: self)
+    Match.where(user_one: self).or(Match.where(user_two: self))
+  end
+
+  def interactions
+    Interaction.where(sender: self).or(Interaction.where(receiver: self))
   end
 end
