@@ -1,7 +1,7 @@
 class MatchesController < ApplicationController
 
   def index
-    @matches = Match.all
+    @matches = current_user.matches
   end
 
   def show
