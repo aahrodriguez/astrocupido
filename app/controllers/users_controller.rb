@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+
   def index
     # Pra nao quebrar na master, linha nao esta correta
     users = User.where.not(id: current_user.id).joins('LEFT JOIN interactions ON interactions.sender_id = users.id OR interactions.receiver_id = users.id')
