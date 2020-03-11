@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+
   def index
 
     # we have a user
