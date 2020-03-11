@@ -1,13 +1,22 @@
-<% @matches.each do |match| %>
-  <%= link_to match_path(match.id) do %>
-    <div class="card">
+<% if @matches.nil? %>
+  <div class="card">
+    You dont have matches yet
+  </div>
+<% else %>
+  <% @matches.each do |match| %>
+    <%= link_to match_path(match.id) do %>
+      <div class="card">
       <% if match.user_one == current_user %>
-        <h2> <%= match.user_two.email %></h2>
+          <h2> <%= match.user_two.username %></h2>
       <% else %>
-        <h2> <%= match.user_one.email %></h2>
+          <h2> <%= match.user_one.username %></h2>
       <% end %>
-      <h2><%= match.messages.last.content %></h2>
-    </div>
+        <% if match.messages.last.nil? %>
+          <h2></h2>
+        <% else %>
+          <h2><%= match.messages.last.content %></h2>
+    <% end %>
+      </div>
   <% end %>
 <% end %>
 
