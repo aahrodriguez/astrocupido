@@ -1,4 +1,3 @@
-
 <% if @best_match.nil? %>
   <% render "end" %>
 <% else %>
@@ -7,19 +6,17 @@
       75%
     </h5>
     <% if @best_match.photos.attached? %>
-       <img class="d-block" id="image-carousel" src='' alt="<% @best_match.id %>">
-          <div class="user-details"><%= @best_match.username %></div>
+      <img class="d-block" id="image-carousel" src='' alt="<% @best_match.id %>">
+        <div class="user-details"><%= @best_match.username %></div>
     <% elsif @best_match.gender == "male" %>
-        <%= link_to user_path(@best_match) do %>
-           <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866471/rqujcnufwkhrrkmdgkku.png" alt="<% @best_match.id %>">
-            <%#= image_tag "image" %>
-        <% end %>
+      <%= link_to user_path(@best_match) do %>
+        <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866471/rqujcnufwkhrrkmdgkku.png" alt="<% @best_match.id %>">
+      <% end %>
             <div class="user-details"><%= @best_match.username %></div>
     <% else %>
-        <%= link_to user_path(@best_match) do %>
-             <%#= image_tag "image" %>
-             <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866457/hj6sf5ea59kq5xhi19ew.png" alt="<% @best_match.id %>">
-        <% end %>
+      <%= link_to user_path(@best_match) do %>
+        <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866457/hj6sf5ea59kq5xhi19ew.png" alt="<% @best_match.id %>">
+      <% end %>
     <div class="signs-list">
       <div class="sign">XX</div>
       <div id="sun-sign" class="sign">XXX</div>
@@ -30,8 +27,12 @@
       <span class="deslike">
         <%= link_to interactions_path(like: false, receiver: @best_match.id), method: :post do %>
         <% end %>
+      </span>
+      <span class="like">
+        <%= link_to interactions_path(like: true, receiver: @best_match.id), method: :post do %>
         <% end %>
       </span>
+      <% end %>
     </div>
   </div>
 <% end %>
