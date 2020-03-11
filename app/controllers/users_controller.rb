@@ -10,7 +10,6 @@ class UsersController < ApplicationController
     # users = users.where(interactions: {like: true, receiver: current_user})
     #                          .or(users.where.not(interactions: {sender: current_user}))
     @users = User.where.not(id: current_user.id)
-    # users.reject! { |user| user.interactions.senders.include? current_user }
 
     # users = users.sort_by { |user|
     #     (SignMatch.find_by(s1: current_user.astrology_chart.sun_id, s2: user.astrology_chart.sun_id).percentage * 3)
