@@ -2,8 +2,9 @@
   <div class="margin-container">
     <h1><%= (@user.username).capitalize %></h1>
     <h2><%= distance_of_time_in_words(DateTime.now, @user.astrology_chart.birthdate)%></h2>
-    <h3><%= Sign.find(@user.astrology_chart.sun_id).sign_name %> | <%= Sign.find(
-    @user.astrology_chart.moon_id).sign_name %> | <%= Sign.find(@user.astrology_chart.ascendant_id).sign_name %></h3>
+    <%= Sign.find(@user.astrology_chart.sun_id).sign_name %>
+    <%= Sign.find(@user.astrology_chart.moon_id).sign_name %>
+    <%= Sign.find(@user.astrology_chart.ascendant_id).sign_name %>
     <p><%= @user.description %></p>
     <p><%= @user.gender %></p>
 
