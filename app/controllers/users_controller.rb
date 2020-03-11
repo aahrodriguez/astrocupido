@@ -11,12 +11,12 @@ class UsersController < ApplicationController
     #                          .or(users.where.not(interactions: {sender: current_user}))
     @users = User.where.not(id: current_user.id)
 
-    users = users.sort_by { |user|
-        (SignMatch.find_by(s1: current_user.astrology_chart.sun_id, s2: user.astrology_chart.sun_id).percentage * 3)
-      + (SignMatch.find_by(s1: current_user.astrology_chart.moon_id, s2: user.astrology_chart.moon_id).percentage * 2)
-      + (SignMatch.find_by(s1: current_user.astrology_chart.ascendant_id, s2: user.astrology_chart.ascendant_id).percentage) }
+    # users = users.sort_by { |user|
+    #     (SignMatch.find_by(s1: current_user.astrology_chart.sun_id, s2: user.astrology_chart.sun_id).percentage * 3)
+    #   + (SignMatch.find_by(s1: current_user.astrology_chart.moon_id, s2: user.astrology_chart.moon_id).percentage * 2)
+    #   + (SignMatch.find_by(s1: current_user.astrology_chart.ascendant_id, s2: user.astrology_chart.ascendant_id).percentage) }
 
-    @best_match = users
+    # @best_match = users
   end
 
   def show

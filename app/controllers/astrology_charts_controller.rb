@@ -46,10 +46,9 @@ class AstrologyChartsController < ApplicationController
 
   def update
     @astrology_chart = AstrologyChart.find_by(user_id: current_user)
-    @astrology_chart.user = current_user
     @astrology_chart.state = State.find_by(state_name: params[:astrology_chart][:state_id])
     clientInstance = AstrologyService.new(ENV["ASTROLOGY_USER_ID"], ENV["ASTROLOGY_API_KEY"])
-    if @astrology_chart.save
+    if @astrology_chart.update(astrology_chart_params)
       response = clientInstance.call("planets/tropical",
         @astrology_chart.birthdate.day,
         @astrology_chart.birthdate.month,
@@ -64,13 +63,9 @@ class AstrologyChartsController < ApplicationController
       @astrology_chart.moon_id = Sign.find_by(sign_name: response_parsed[1]["sign"])&.id
       @astrology_chart.ascendant_id = Sign.find_by(sign_name: response_parsed[10]["sign"])&.id
       @astrology_chart.save
-      if @astrology_chart.save
-        redirect_to all_users_path
-      else
-        render :new
-      end
+      redirect_to my_profile_path
     else
-      render :new
+      render :edit
     end
   end
 
