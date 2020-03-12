@@ -1,5 +1,37 @@
+.my-profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  min-height: 756px;
+  img {
+    margin-left: 0;
+  }
+  .profile-name {
+    font-weight: bolder;
+    text-align: center;
+    h2 {
+      color: rgba(160,103,176,1);
+    }
+  }
+  h4 {
+    font-size: 20px;
+    padding: 0 20px;
+    text-align: center;
+  }
+  p {
+    font-size: 14px;
+    padding: 0 20px;
+    text-align: center;
+  }
+  a {
+    color: #fff;
+    text-align: center;
+  }
+}
 .margin-container {
-  padding: 60px 40px;
+  padding: 35px 25px;
 }
 
 #profile-configurations {
@@ -18,4 +50,7 @@
 
 .profile-btn {
   background: linear-gradient(130deg, rgba(160,103,176,1) 0%, rgba(123,35,152,1) 100%);
+  margin-bottom: 20px;
+  padding: 10px 0;
+  border-radius: 50px;
 }

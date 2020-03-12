@@ -5,15 +5,17 @@ class UsersController < ApplicationController
     users = User.where.not(id: current_user.id).joins('LEFT JOIN interactions ON interactions.sender_id = users.id OR interactions.receiver_id = users.id')
     users =  users.reject { |user| user.interactions.pluck(:sender_id).include? current_user.id }
 
-    users = users.sort_by { |user|
-         (SignMatch.find_by(sign_one_id: current_user.astrology_chart.sun_id, sign_two_id: user.astrology_chart.sun_id).percentage * 3)
-       + (SignMatch.find_by(sign_one_id: current_user.astrology_chart.moon_id, sign_two_id: user.astrology_chart.moon_id).percentage * 2)
-       + (SignMatch.find_by(sign_one_id: current_user.astrology_chart.ascendant_id, sign_two_id: user.astrology_chart.ascendant_id).percentage) }
+    users = users.sort_by { |user| current_user.match_percentage(user) }
     @best_match = users.first
+    @match_percentage = current_user.match_percentage(@best_match)
   end
 
   def show
     @user = User.find(params[:id])
+    @match_percentage = current_user.match_percentage(@user)
+    @sun_percentage = current_user.sun_percentage(@user)
+    @moon_percentage = current_user.moon_percentage(@user)
+    @ascendant_percentage = current_user.ascendant_percentage(@user)
   end
 
   def my_profile

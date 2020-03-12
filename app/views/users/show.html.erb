@@ -1,9 +1,9 @@
 <div class="mobile-container">
   <div class="margin-container">
     <div class="profile-user-container">
-      <h5 class="match-percent">
-        70%
-      </h5>
+      <h2 class="profile-name">
+      <%= @match_percentage %>%
+      </h2>
         <div class="profile-photo">
         <% if @user.avatar.attached? %>
           <%= link_to all_users_path do %>
@@ -25,14 +25,34 @@
             <% end %>
         <% end %>
         </div>
-        <p class="profile-name">
+        <h1 class="profile-name">
           <%= link_to all_users_path do %>
             <%= @user.username %>
           <% end %>
-        </p>
+        </h1>
+        <h3><%= distance_of_time_in_words(DateTime.now, @user.astrology_chart.birthdate)%></h3>
         <p><%= @user.description %></p>
-        <p><%= @user.astrology_chart.birth_city %></p>
-        <p><%= @user.astrology_chart.birthdate %></p>
+        <h5 class="profile-name"><%= @user.astrology_chart.birth_city %></h5>
+        <div class="compatibility-bars">
+          <h6>
+            Solar compatibility: <%= @sun_percentage %>%
+          </h6>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: <%= @sun_percentage %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <h6>
+            Moon compatibility: <%= @moon_percentage %>%
+          </h6>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: <%= @moon_percentage %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <h6>
+            Ascendant compatibility: <%= @ascendant_percentage %>%
+          </h6>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: <%= @ascendant_percentage %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
         <div class="like-buttons">
           <div class="deslike">
             <%= link_to interactions_path(like: false, receiver: @user.id), method: :post do %>
@@ -41,7 +61,7 @@
           </div>
           <div class="like">
             <%= link_to interactions_path(like: true, receiver: @user.id), method: :post do %>
-              <i class="far fa-heart fas-4x"></i>
+              <i class="fas fa-heart fas-4x"></i></i>
             <% end %>
           </div>
         </div>
