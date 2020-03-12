@@ -14,6 +14,11 @@
         <%= simple_form_for(@user, as: @user, url: my_preferences_path, html: { method: :put }) do |f| %>
           <%= hidden_field_tag 'id', @user.id %>
           <%= f.error_notification %>
+
+            <h5>Orientação sexual</h5>
+
+            <%= f.input :gender, inline_label: 'avatar', label: false, collection: ["male", "female"] %>
+
             <h5>Mudar foto perfil:</h5>
 
             <%= f.input :avatar, as: :file, inline_label: 'avatar', label: false %>
