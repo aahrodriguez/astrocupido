@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'my_profile', to: 'users#my_profile'
   get "all_users", to: "users#index"
   put "edit_my_user", to: "users#update"
+  get "edit_my_preferences/:id", to: "users#edit_preferences", as: :edit_my_preferences
+  put "my_preferences", to: "users#update_preferences"
 
   resources :interactions, only: [:new, :create]
 

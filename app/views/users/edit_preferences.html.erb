@@ -1,0 +1,31 @@
+<div class="mobile-container">
+  <div class="margin-container">
+    <h2>Editar Preferências</h2>
+    <div class="form-inputs">
+      <% if @user.avatar.attached? %>
+          <%= cl_image_tag @user.avatar.key, height: 200, width: 200, crop: :thumb, gravity: :face %>
+      <% elsif @user.gender == "male" %>
+          <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866471/rqujcnufwkhrrkmdgkku.png" alt="<% @user.id %>">
+      <% else %>
+          <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866457/hj6sf5ea59kq5xhi19ew.png" alt="<% @user.id %>">
+      <% end %>
+        <%= simple_form_for(@user, as: @user, url: my_preferences_path, html: { method: :put }) do |f| %>
+          <%= f.error_notification %>
+            <h5>Mudar foto perfil:</h5>
+
+            <%= f.input :avatar, as: :file, inline_label: 'avatar', label: false %>
+
+            <h5>Descrição</h5>
+
+            <%= f.input :description, as: :text, autofocus: true, inline_label: 'Descrição', label: false %>
+
+            <h5>Mostrar</h5>
+
+            <%= f.input :like_man, as: :boolean, label: 'Homens', input_html: { :checked => true, :unchecked => false } %>
+            <%= f.input :like_woman, as: :boolean, label: 'Mulheres', input_html: { :checked => true, :unchecked => false } %>
+
+          <%= f.button :submit, "Update" %>
+        <% end %>
+      </div>
+  </div>
+</div>

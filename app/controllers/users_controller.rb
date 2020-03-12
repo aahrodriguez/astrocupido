@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-
   def index
     # Pra nao quebrar na master, linha nao esta correta
     users = User.where.not(id: current_user.id).joins('LEFT JOIN interactions ON interactions.sender_id = users.id OR interactions.receiver_id = users.id')
@@ -32,6 +31,14 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def edit_preferences
+    @user = User.find(params[:id])
+  end
+
+  def update_preferences
+    raise
   end
 
   private
