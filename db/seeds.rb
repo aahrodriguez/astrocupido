@@ -241,9 +241,7 @@ def create_astrology_chart(fake_user, address, user)
     chart.save!
     return chart
   end
-
 end
-
 10.times do |i|
   printf("\r Creating user %03d...", i)
   fake_user = get_randomuser
@@ -251,3 +249,4 @@ end
   user = create_user(fake_user, address)
   create_astrology_chart(fake_user, address, user)
 end
+
