@@ -1,10 +1,31 @@
 <div class="mobile-container">
   <div class="margin-container">
-    <%= cl_image_tag @user.avatar.key, height: 200, width: 200, crop: :thumb, gravity: :face %>
-    <h2><%= @user.username %></h2>
-    <p><%= @user.description %></p>
-    <p><%= @user.astrology_chart.birth_city %></p>
-    <p><%= @user.astrology_chart.birthdate %></p>
+    <div class="profile-user-container">
+      <h5 class="match-percent">
+        70%
+      </h5>
+        <div class="profile-photo">
+          <%= link_to all_users_path do %>
+            <%= cl_image_tag @user.avatar.key, height: 200, width: 200, crop: :thumb, gravity: :face %>
+          <% end %>
+        </div>
+        <p class="profile-name"><%= @user.username %></p>
+        <p><%= @user.description %></p>
+        <p><%= @user.astrology_chart.birth_city %></p>
+        <p><%= @user.astrology_chart.birthdate %></p>
+        <div class="like-buttons">
+          <div class="deslike">
+            <%= link_to interactions_path(like: false, receiver: @user.id), method: :post do %>
+              <i class="fas fa-times fas-4x"></i>
+            <% end %>
+          </div>
+          <div class="like">
+            <%= link_to interactions_path(like: true, receiver: @user.id), method: :post do %>
+              <i class="far fa-heart fas-4x"></i>
+            <% end %>
+          </div>
+        </div>
+    </div>
   </div>
 </div>
 
