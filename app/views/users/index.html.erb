@@ -1,33 +1,42 @@
 <% if @best_match.nil? %>
   <% render "end" %>
 <% else %>
-  <div id="carouselExampleIndicators" class="carousel slide mt-40" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <div class="row">
-        <%= link_to interactions_path(like: false, receiver: @best_match.id), method: :post do %>
-          <span id="decline" data-target="#carouselExampleIndicators" data-slide-to="0"><i class="fas fa-times-circle fa-2x"></i><span>
+  <div class="profile-container">
+    <h5 class="match-percent">
+      70%
+    </h5>
+    <div class="profile-photo">
+      <% if @best_match.avatar.attached? %>
+        <%= link_to user_path(@best_match) do %>
+          <%= cl_image_tag @best_match.avatar.key, height: 200, width: 200, crop: :thumb, gravity: :face %>
         <% end %>
-        <%= link_to interactions_path(like: true, receiver: @best_match.id), method: :post do %>
-        <span id="approve" data-target="#carouselExampleIndicators" data-slide-to="1"><i class="fas fa-heart fa-2x"></i><span>
+      <% elsif @best_match.gender == "male" %>
+        <%= link_to user_path(@best_match) do %>
+          <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866471/rqujcnufwkhrrkmdgkku.png" alt="<% @best_match.id %>">
+        <% end %>
+      <% else %>
+        <%= link_to user_path(@best_match) do %>
+          <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866457/hj6sf5ea59kq5xhi19ew.png" alt="<% @best_match.id %>">
+        <% end %>
+      <% end %>
+    </div>
+    <div class="signs-list">
+      <div class="sign"><h4>ASC</h4><p><%= Sign.find_by(id: @best_match.astrology_chart.ascendant_id).sign_name %></p></div>
+      <div id="sun-sign" class="sign"><h4>SUN</h4><p><%= Sign.find_by(id: @best_match.astrology_chart.sun_id).sign_name %></p></div>
+      <div class="sign"><h4>MOON</h4><p><%= Sign.find_by(id: @best_match.astrology_chart.moon_id).sign_name %></p></div>
+    </div>
+    <p class="profile-name"><%= @best_match.username %></p>
+    <div class="like-buttons">
+      <div class="deslike">
+        <%= link_to interactions_path(like: false, receiver: @best_match.id), method: :post do %>
+          <i class="fas fa-times fas-4x"></i>
         <% end %>
       </div>
-    </ol>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-        <% if @best_match.photos.attached? %>
-          <img class="d-block" id="image-carousel" src='' alt="<% @best_match.id %>">
-            <div class="user-details"><%= @best_match.username %></div>
-        <% elsif @best_match.gender == "male" %>
-          <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866471/rqujcnufwkhrrkmdgkku.png" alt="<% @best_match.id %>">
-            <div class="user-details"><%= @best_match.username %></div>
-        <% else %>
-          <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866457/hj6sf5ea59kq5xhi19ew.png" alt="<% @best_match.id %>">
-            <div class="user-details"><%= @best_match.username %></div>
-        </div>
+      <div class="like">
+        <%= link_to interactions_path(like: true, receiver: @best_match.id), method: :post do %>
+          <i class="far fa-heart fas-4x"></i>
         <% end %>
+      </div>
     </div>
   </div>
 <% end %>
-
-
-
