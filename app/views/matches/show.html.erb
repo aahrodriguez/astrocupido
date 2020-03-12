@@ -1,9 +1,14 @@
-
 <div class="container">
-  <%= link_to 'Voltar', matches_path %>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      <div class="chat-header"><h4><%= @match.user_one.email %></h4></div>
+      <div class="chat-header">
+        <div>
+          <%= link_to 'Voltar', matches_path %>
+        </div>
+        <div>
+          <h4><%= @match.user_one.username %></h4>
+        </div>
+      </div>
       <div class="messages">
         <% @match.messages.each do |message| %>
         <%= render "messages/message", message: message, user_is_messages_author: message.from?(current_user) %>
