@@ -1,6 +1,6 @@
-<% if @matches.nil? %>
+<% if @matches.empty? %>
   <div class="card">
-    You dont have matches yet
+    <p>You dont have matches yet</p>
   </div>
 <% else %>
   <% @matches.each do |match| %>
@@ -15,6 +15,7 @@
           <h2></h2>
         <% else %>
           <h2><%= match.messages.last.content %></h2>
+        <% end %>
     <% end %>
       </div>
   <% end %>
