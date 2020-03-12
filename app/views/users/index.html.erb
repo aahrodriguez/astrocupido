@@ -25,7 +25,11 @@
       <div id="sun-sign" class="sign"><h4>SUN</h4><p><%= Sign.find_by(id: @best_match.astrology_chart.sun_id).sign_name %></p></div>
       <div class="sign"><h4>MOON</h4><p><%= Sign.find_by(id: @best_match.astrology_chart.moon_id).sign_name %></p></div>
     </div>
-    <p class="profile-name"><%= @best_match.username %></p>
+    <p class="profile-name">
+      <%= link_to user_path(@best_match) do %>
+        <%= @best_match.username %>
+      <% end %>
+    </p>
     <div class="like-buttons">
       <div class="deslike">
         <%= link_to interactions_path(like: false, receiver: @best_match.id), method: :post do %>

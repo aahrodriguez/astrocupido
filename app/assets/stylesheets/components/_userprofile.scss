@@ -13,6 +13,7 @@
     width: 75vw;
     height: 100%;
     border-radius: 50%;
+    margin: 0;
   }
   .signs-list {
     display: flex;
@@ -40,9 +41,10 @@
   }
   .like-buttons {
     display:flex;
-    width: 100%;
+    width: 120%;
     justify-content: space-around;
     margin-bottom: 50px;
+    color: #fff;
     .deslike {
       background: linear-gradient(130deg, rgba(160,103,176,1) 0%, rgba(123,35,152,1) 100%);
       border-radius: 50%;
@@ -51,7 +53,13 @@
       box-shadow: 1px 3px 10px 3px rgba(0, 0, 0, .3);
       text-align: center;
       padding: 45px;
-
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 55px;
+      i {
+        color: #fff;
+      }
     }
     .like {
       background: linear-gradient(130deg, rgba(160,103,176,1) 0%, rgba(123,35,152,1) 100%);
@@ -61,11 +69,17 @@
       box-shadow: 1px 3px 10px 3px rgba(0, 0, 0, .3);
       text-align: center;
       padding: 45px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 55px;
+      i {
+        color: #fff;
+      }
+    }
+    .interactions_path:hover{
+    background-color: none;
+    text-decoration: none;
     }
   }
 }
-
-#sun-sign {
-      height: 50px;
-      width: 50px;
-    }

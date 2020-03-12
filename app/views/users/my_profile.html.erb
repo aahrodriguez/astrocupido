@@ -1,13 +1,33 @@
 <div class="mobile-container">
   <div class="margin-container">
-    <h1><%= (@user.username).capitalize %></h1>
-    <h2><%= distance_of_time_in_words(DateTime.now, @user.astrology_chart.birthdate)%></h2>
-
-    <p><%= @user.description %></p>
-    <p><%= @user.gender %></p>
-
-    <p><%= link_to "Preferencias", edit_my_preferences_path(current_user) %></p>
-    <p><%= link_to "Configurar Dados", edit_user_path(current_user) %></p>
-    <p><%= link_to "Recalcular Mapa", edit_astrology_chart_path(current_user) %></p>
+    <div class="profile-user-container">
+        <div class="profile-photo">
+          <% if @user.avatar.attached? %>
+            <%= link_to my_profile_path do %>
+              <%= cl_image_tag @user.avatar.key, height: 200, width: 200, crop: :thumb, gravity: :face %>
+            <% end %>
+          <% elsif @user.gender == "male" %>
+            <%= link_to my_profile_path do %>
+              <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866471/rqujcnufwkhrrkmdgkku.png" alt="<% @user.id %>">
+            <% end %>
+          <% else %>
+            <%= link_to my_profile_path do %>
+              <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866457/hj6sf5ea59kq5xhi19ew.png" alt="<% @user.id %>">
+            <% end %>
+          <% end %>
+        </div>
+        <p class="profile-name"><%= @user.username.capitalize %></p>
+        <h2><%= distance_of_time_in_words(DateTime.now, @user.astrology_chart.birthdate)%></h2>
+        <p><%= @user.description %></p>
+        <p><%= @user.gender %></p>
+        <div class="profile-buttons">
+          <div class="row">
+            <%= link_to "Preferencias", edit_my_preferences_path(current_user), class:"profile-btn btn col-sm-4" %>
+            <%= link_to "Configurar Dados", edit_user_path(current_user), class:"profile-btn btn col-sm-4" %>
+            <%= link_to "Recalcular Mapa", edit_astrology_chart_path(current_user), class:"profile-btn btn col-sm-4" %>
+          </div>
+        </div>
+    </div>
   </div>
 </div>
+

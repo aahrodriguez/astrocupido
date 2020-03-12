@@ -5,11 +5,31 @@
         70%
       </h5>
         <div class="profile-photo">
+        <% if @user.avatar.attached? %>
           <%= link_to all_users_path do %>
-            <%= cl_image_tag @user.avatar.key, height: 200, width: 200, crop: :thumb, gravity: :face %>
+
+          <% if @user.avatar.attached? %>
+              <h4> <%= cl_image_tag @user.avatar.key, height: 200, width: 200, crop: :thumb, gravity: :face %></h4>
+            <% else %>
+              <h4> <%= cl_image_tag "https://res.cloudinary.com/dgeodyyf7/image/upload/v1583239038/astroloja-01_mwidxw.jpg", crop: :fill, class: "avatar" %></h4>
+            <% end %>
+            <%#= cl_image_tag @user.avatar.key, height: 200, width: 200, crop: :thumb, gravity: :face %>
           <% end %>
+          <% elsif @best_match.gender == "male" %>
+            <%= link_to user_path(@best_match) do %>
+              <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866471/rqujcnufwkhrrkmdgkku.png" alt="<% @best_match.id %>">
+            <% end %>
+          <% else %>
+            <%= link_to user_path(@best_match) do %>
+              <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866457/hj6sf5ea59kq5xhi19ew.png" alt="<% @best_match.id %>">
+            <% end %>
+        <% end %>
         </div>
-        <p class="profile-name"><%= @user.username %></p>
+        <p class="profile-name">
+          <%= link_to all_users_path do %>
+            <%= @user.username %>
+          <% end %>
+        </p>
         <p><%= @user.description %></p>
         <p><%= @user.astrology_chart.birth_city %></p>
         <p><%= @user.astrology_chart.birthdate %></p>
