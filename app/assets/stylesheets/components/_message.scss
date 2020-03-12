@@ -18,6 +18,9 @@
     .message-content {
       background-color: #E3D3CC;
       color: white;
+      max-width: 215px;
+      word-wrap: break-word;
+      height: 100%;
     }
   }
 }
@@ -44,7 +47,11 @@
 }
 .message_content {
   margin-bottom: 0;
+  max-width: 215px;
+  word-wrap: break-word;
+  height: 100%;
 }
+
 input.form-control {
   border: 1px solid #ECECEC;
   box-shadow: none;
@@ -72,12 +79,12 @@ input.form-control {
 }
 
 .message-user {
-  background-color: #EDD9D5;
+
   color: rgba(160,103,176,1);
   border-radius: 3px;
   margin: 2  2px;
   padding: 2px 2px;
-  height: 35px;
+  position: absolute;
 }
 .name{
   text-decoration: none;
@@ -89,8 +96,12 @@ input.form-control {
 }
 
 .caixa{
-  display: flex
-  d-flex align-items-center
+  display: flex;
+  background-color: rgba(123,35,152,1);
 
 
+}
+
+.user {
+  position: relative;
 }

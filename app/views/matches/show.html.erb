@@ -26,11 +26,11 @@
         <%= render "messages/message", message: message, user_is_messages_author: message.from?(current_user) %>
         <% end %>
       </div>
-        <div class="row d-flex align-items-center">
+        <div class="row">
           <div id="creat-message">
-            <%= simple_form_for [@match, Message.new], remote: true do |f| %>
-            <%= f.input :content, label: false %>
-            <%= f.submit label: ">"%>
+            <%= simple_form_for [@match, Message.new], class: 'row', remote: true do |f| %>
+            <%= f.input :content, label: false, class: "col-sm-10" %>
+            <%= f.submit label: ">", class: 'col-sm-2'%>
             <% end %>
           </div>
       </div>
