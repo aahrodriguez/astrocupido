@@ -38,13 +38,18 @@ class UsersController < ApplicationController
   end
 
   def update_preferences
-    raise
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    @user.like_man == "0" ? @user.like_man = false : @user.like_man = true
+    @user.like_woman == "0" ? @user.like_woman = false : @user.like_woman = true
+    @user.save
+    redirect_to my_profile_path
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password )
+    params.require(:user).permit(:username, :email, :password, :description, :like_man, :like_woman, :avatar)
   end
 
   def user_update_params
