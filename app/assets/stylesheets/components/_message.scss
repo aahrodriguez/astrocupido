@@ -16,15 +16,19 @@
   &.right {
     flex-direction: row-reverse;
     .message-content {
-      background-color: #F2F9FC;
+      background-color: #E3D3CC;
+      color: white;
     }
   }
 }
 .message-content {
-  background-color: #F7F7F7;
+  background-color: rgba(160,103,176,1);
   border-radius: 3px;
   margin: 0 10px;
   padding: 11px 10px 8px 10px;
+  vertical-align: center;
+  height: 35px;
+  color: white;
 }
 .avatar {
   width: 42px;
@@ -65,7 +69,28 @@ input.form-control {
 .voltar {
   color: rgba(123,35,152,1);
   font-size: 33px;
+}
+
+.message-user {
+  background-color: #EDD9D5;
+  color: rgba(160,103,176,1);
+  border-radius: 3px;
+  margin: 2  2px;
+  padding: 2px 2px;
+  height: 35px;
+}
+.name{
+  text-decoration: none;
+  color: white;
+  :hover {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.caixa{
+  display: flex
+  d-flex align-items-center
 
 
 }
-

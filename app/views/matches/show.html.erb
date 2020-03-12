@@ -10,7 +10,7 @@
               </h4>
           </div>
           <div>
-            <h4><%= link_to @match.other_user(current_user).username.downcase.capitalize, user_path(@match.other_user(current_user).id) %></h4>
+            <h4><%= link_to @match.other_user(current_user).username.downcase.capitalize, user_path(@match.other_user(current_user).id), class: "name" %></h4>
           </div>
           <div>
             <% if @match.other_user(current_user).avatar.attached? %>
@@ -26,11 +26,13 @@
         <%= render "messages/message", message: message, user_is_messages_author: message.from?(current_user) %>
         <% end %>
       </div>
-      <div id="creat-message">
-        <%= simple_form_for [@match, Message.new], remote: true do |f| %>
-        <%= f.input :content, label: false %>
-        <%= f.submit %>
-        <% end %>
+        <div class="row d-flex align-items-center">
+          <div id="creat-message">
+            <%= simple_form_for [@match, Message.new], remote: true do |f| %>
+            <%= f.input :content, label: false %>
+            <%= f.submit label: ">"%>
+            <% end %>
+          </div>
       </div>
     </div>
   </div>
