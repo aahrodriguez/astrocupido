@@ -6,7 +6,13 @@
       </h5>
         <div class="profile-photo">
           <%= link_to all_users_path do %>
-            <%= cl_image_tag @user.avatar.key, height: 200, width: 200, crop: :thumb, gravity: :face %>
+
+          <% if @user.avatar.attached? %>
+              <h4> <%= cl_image_tag @user.avatar.key, height: 200, width: 200, crop: :thumb, gravity: :face %></h4>
+            <% else %>
+              <h4> <%= cl_image_tag "https://res.cloudinary.com/dgeodyyf7/image/upload/v1583239038/astroloja-01_mwidxw.jpg", crop: :fill, class: "avatar" %></h4>
+            <% end %>
+            <%#= cl_image_tag @user.avatar.key, height: 200, width: 200, crop: :thumb, gravity: :face %>
           <% end %>
         </div>
         <p class="profile-name"><%= @user.username %></p>

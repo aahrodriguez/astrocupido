@@ -53,12 +53,19 @@ input.form-control {
   }
 }
 .chat-header {
-  background-color: #4F2F4C;
+  background: linear-gradient(130deg, rgba(160,103,176,1) 0%, rgba(123,35,152,1) 100%);
   color: white;
   padding: 10px 20px;
   margin-top: 10px;
   h4 {
     margin: 0;
   }
+}
+
+.voltar {
+  color: rgba(123,35,152,1);
+  font-size: 33px;
+
+
 }
 
