@@ -1,7 +1,7 @@
 class Message < ApplicationRecord
   after_create :broadcast_message
   belongs_to :match
-  belongs_to :sender, class_name: 'User'
+  belongs_to :sender, class_name: 'User', dependent: :destroy
   validates :content, presence: true, allow_blank: false
 
   def from?(some_user)
