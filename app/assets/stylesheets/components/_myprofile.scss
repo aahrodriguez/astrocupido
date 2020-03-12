@@ -1,0 +1,21 @@
+.margin-container {
+  padding: 60px 40px;
+}
+
+#profile-configurations {
+  text-align: center;
+  p {
+    align-items: center;
+  }
+}
+
+.profile-buttons {
+  display:flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-bottom: 50px;
+}
+
+.profile-btn {
+  background: linear-gradient(130deg, rgba(160,103,176,1) 0%, rgba(123,35,152,1) 100%);
+}

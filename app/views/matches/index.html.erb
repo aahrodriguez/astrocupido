@@ -1,24 +1,31 @@
 <% if @matches.nil? %>
-  <div class="card">
-    You dont have matches yet
+  <div class="card-product-infos">
+    <h2>You dont have matches yet.</h2>
   </div>
 <% else %>
+<div class="card-title">
+  <h2>Chats</h2>
+</div>
   <% @matches.each do |match| %>
-    <%= link_to match_path(match.id) do %>
-      <div class="card">
-      <% if match.user_one == current_user %>
-          <h2> <%= match.user_two.username %></h2>
-      <% else %>
-          <h2> <%= match.user_one.username %></h2>
+      <%= link_to match_path(match.id) do %>
+        <div class="card-product">
+        <div class="sign-chat" id="sign-icon"><h4 id="sign-icon">SUN</h4><div id="sign-icon">icon</div><p sign-icon><%= Sign.find_by(id: User.find_by(id: match.user_two_id).astrology_chart.sun_id).sign_name %></p></div>
+          <%= link_to match_path(match.id) do %>
+            <%= cl_image_tag User.find_by(id: match.user_two_id).avatar.key, height: 200, width: 200, crop: :thumb, gravity: :face %>
+            <div class="card-product-infos">
+              <% if match.user_one == current_user %>
+                  <h2> <%= match.user_two.username %></h2>
+              <% else %>
+                  <h2> <%= match.user_one.username %></h2>
+              <% end %>
+              <% if match.messages.last.nil? %>
+                <p></p>
+              <% else %>
+                <p><%= match.messages.last.content %></p>
+              <% end %>
+          <% end %>
+          </div>
+        </div>
       <% end %>
-        <% if match.messages.last.nil? %>
-          <h2></h2>
-        <% else %>
-          <h2><%= match.messages.last.content %></h2>
-        <% end %>
-    <% end %>
-      </div>
   <% end %>
 <% end %>
-
-

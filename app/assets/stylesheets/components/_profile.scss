@@ -15,6 +15,7 @@
     width: 75vw;
     height: 100%;
     border-radius: 50%;
+    margin: 0;
   }
   .signs-list {
     display:flex;
@@ -53,7 +54,13 @@
       box-shadow: 1px 3px 10px 3px rgba(0, 0, 0, .3);
       text-align: center;
       padding: 45px;
-
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 55px;
+      i {
+        color: #fff;
+      }
     }
     .like {
       background: linear-gradient(130deg, rgba(160,103,176,1) 0%, rgba(123,35,152,1) 100%);
@@ -63,6 +70,13 @@
       box-shadow: 1px 3px 10px 3px rgba(0, 0, 0, .3);
       text-align: center;
       padding: 45px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 55px;
+      i {
+        color: #fff;
+      }
     }
   }
 }
