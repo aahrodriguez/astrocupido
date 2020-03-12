@@ -1,9 +1,26 @@
-
 <div class="container">
-  <%= link_to 'Voltar', matches_path %>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      <div class="chat-header"><h4><%= @match.user_one.email %></h4></div>
+      <div class="chat-header">
+        <div class="row justify-content-around">
+          <div>
+            <h4><%= link_to matches_path, class: "voltar" do  %>
+              <i class="fas fa-chevron-left"></i>
+            <% end %>
+              </h4>
+          </div>
+          <div>
+            <h4><%= link_to @match.other_user(current_user).username.downcase.capitalize, user_path(@match.other_user(current_user).id) %></h4>
+          </div>
+          <div>
+            <% if @match.other_user(current_user).avatar.attached? %>
+              <h4> <%= cl_image_tag @match.other_user(current_user).avatar.key, height: 200, width: 200, crop: :thumb, gravity: :face %></h4>
+            <% else %>
+              <h4> <%= cl_image_tag "https://res.cloudinary.com/dgeodyyf7/image/upload/v1583239038/astroloja-01_mwidxw.jpg", crop: :fill, class: "avatar" %></h4>
+            <% end %>
+          </div>
+        </div>
+      </div>
       <div class="messages">
         <% @match.messages.each do |message| %>
         <%= render "messages/message", message: message, user_is_messages_author: message.from?(current_user) %>

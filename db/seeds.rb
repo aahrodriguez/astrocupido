@@ -233,7 +233,13 @@ def create_astrology_chart(fake_user, address, user)
           chart.birthdate.min,
           chart.latitude,
           chart.longitude,
-          -3)
+          -3)logy_chart.sun_id, sign_two_id: user.astrology_chart.sun_id).percentage * 3)
+       + (SignMatch.find_by(sign_one_id: current_user.astrology_chart.moon_id, sign_two_id: user.astrology_chart.moon_id).percentage * 2)
+       + (SignMatch.find_by(sign_one_id: current_user.astrology_chart.ascendant_id, sign_two_id: user.astrology_chart.ascendant_id).percentage) }
+    @best_match = users.first
+
+Rails.root: /home/andres/code/aahrodriguez/astrocupido
+Application Trace | Framework Trace | Full Trace
     response_parsed = JSON.parse(response)
     chart.sun_id = Sign.find_by(sign_name: response_parsed[0]["sign"]).id
     chart.moon_id = Sign.find_by(sign_name: response_parsed[1]["sign"]).id
@@ -241,9 +247,7 @@ def create_astrology_chart(fake_user, address, user)
     chart.save!
     return chart
   end
-
 end
-
 10.times do |i|
   printf("\r Creating user %03d...", i)
   fake_user = get_randomuser
@@ -251,3 +255,4 @@ end
   user = create_user(fake_user, address)
   create_astrology_chart(fake_user, address, user)
 end
+
