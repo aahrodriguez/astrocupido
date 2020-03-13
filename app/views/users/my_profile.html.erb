@@ -1,10 +1,10 @@
 <div class="mobile-container">
   <div class="margin-container">
-    <div class="my-profile-container">
+    <div class="my-user-profile-container">
         <div class="profile-photo">
           <% if @user.avatar.attached? %>
             <%= link_to my_profile_path do %>
-              <%= cl_image_tag @user.avatar.key, height: 200, width: 200, crop: :thumb, gravity: :face %>
+              <%= cl_image_tag @user.avatar.key, crop: :thumb, gravity: :face %>
             <% end %>
           <% elsif @user.gender == "male" %>
             <%= link_to my_profile_path do %>

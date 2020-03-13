@@ -12,11 +12,11 @@
         <% end %>
       <% elsif @best_match.gender == "male" %>
         <%= link_to user_path(@best_match) do %>
-          <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866471/rqujcnufwkhrrkmdgkku.png" alt="<% @best_match.id %>">
+          <img src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866471/rqujcnufwkhrrkmdgkku.png" alt="<% @best_match.id %>">
         <% end %>
       <% else %>
         <%= link_to user_path(@best_match) do %>
-          <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866457/hj6sf5ea59kq5xhi19ew.png" alt="<% @best_match.id %>">
+          <img src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866457/hj6sf5ea59kq5xhi19ew.png" alt="<% @best_match.id %>">
         <% end %>
       <% end %>
     </div>
@@ -26,9 +26,29 @@
       <% end %>
     </h2>
     <div class="signs-list">
-      <div class="sign"><h4>ASC</h4><p><%= Sign.find_by(id: @best_match.astrology_chart.ascendant_id).sign_name %></p></div>
-        <div id="sun-sign" class="sign"><h4>SUN</h4><p><%= Sign.find_by(id: @best_match.astrology_chart.sun_id).sign_name %></p></div>
-      <div class="sign"><h4>MOON</h4><p><%= Sign.find_by(id: @best_match.astrology_chart.moon_id).sign_name %></p></div>
+      <div class="sign">
+        <div class="sign-description">
+          <h4>ASC</h4>
+          <div><%= image_tag(@best_match.astrology_chart.ascendant.icon_url) %></div>
+          <p><%= Sign.find_by(id: @best_match.astrology_chart.ascendant_id).sign_name %></p>
+        </div>
+      </div>
+      <div id="sun-sign">
+        <div class="icon-sign">
+          <div class="sign-description">
+            <h4>SUN</h4>
+            <div><%= image_tag(@best_match.astrology_chart.sun.icon_url) %></div>
+            <%= Sign.find_by(id: @best_match.astrology_chart.sun_id).sign_name %>
+          </div>
+        </div>
+      </div>
+      <div class="sign">
+        <div class="sign-description">
+          <h4>MOON</h4>
+          <div><%= image_tag(@best_match.astrology_chart.moon.icon_url) %></div>
+          <p><%= Sign.find_by(id: @best_match.astrology_chart.moon_id).sign_name %></p>
+        </div>
+      </div>
     </div>
     <div class="like-buttons">
       <div class="deslike">
