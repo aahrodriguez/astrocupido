@@ -29,23 +29,21 @@
       <div class="sign">
         <div class="sign-description">
           <h4>ASC</h4>
-          <div><%= image_tag(@best_match.astrology_chart.ascendant.icon_url) %></div>
+          <div class="icon-sign"><%= image_tag(@best_match.astrology_chart.ascendant.icon_url) %></div>
           <p><%= Sign.find_by(id: @best_match.astrology_chart.ascendant_id).sign_name %></p>
         </div>
       </div>
-      <div class="sign">
-        <div class="icon-sign">
-          <div id="sun-sign" class="sign-description">
-            <h4>SUN</h4>
-            <div><%= image_tag(@best_match.astrology_chart.sun.icon_url) %></div>
-            <%= Sign.find_by(id: @best_match.astrology_chart.sun_id).sign_name %>
-          </div>
+      <div class="sun-sign">
+        <div class="sign-sun-description">
+          <h4>SUN</h4>
+          <div class="icon-sun-sign"><%= image_tag(@best_match.astrology_chart.sun.icon_url) %></div>
+          <%= Sign.find_by(id: @best_match.astrology_chart.sun_id).sign_name %>
         </div>
       </div>
       <div class="sign">
         <div class="sign-description">
           <h4>MOON</h4>
-          <div><%= image_tag(@best_match.astrology_chart.moon.icon_url) %></div>
+          <div class="icon-sign"><%= image_tag(@best_match.astrology_chart.moon.icon_url) %></div>
           <p><%= Sign.find_by(id: @best_match.astrology_chart.moon_id).sign_name %></p>
         </div>
       </div>
