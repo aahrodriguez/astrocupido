@@ -20,4 +20,25 @@ class User < ApplicationRecord
   def interactions
     Interaction.where(sender: self).or(Interaction.where(receiver: self))
   end
+
+  def sun_percentage(user)
+    SignMatch.find_by(sign_one_id: astrology_chart.sun_id, sign_two_id: user.astrology_chart.sun_id).percentage
+  end
+
+  def moon_percentage(user)
+    SignMatch.find_by(sign_one_id: astrology_chart.moon_id, sign_two_id: user.astrology_chart.moon_id).percentage
+  end
+
+  def ascendant_percentage(user)
+    SignMatch.find_by(sign_one_id: astrology_chart.ascendant_id, sign_two_id: user.astrology_chart.ascendant_id).percentage
+  end
+
+  def match_percentage(user)
+    match_result =
+      (sun_percentage(user) * 3) +
+      (moon_percentage(user) * 2) +
+      ascendant_percentage(user)
+
+    match_result/6
+  end
 end

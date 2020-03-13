@@ -2,9 +2,9 @@
   <% render "end" %>
 <% else %>
   <div class="profile-container">
-    <h5 class="match-percent">
-      70%
-    </h5>
+    <h2 class="profile-name">
+      <%= @match_percentage %>%
+    </h2>
     <div class="profile-photo">
       <% if @best_match.avatar.attached? %>
         <%= link_to user_path(@best_match) do %>
@@ -20,16 +20,16 @@
         <% end %>
       <% end %>
     </div>
+    <h2 class="profile-name">
+      <%= link_to user_path(@best_match) do %>
+        <%= @best_match.username %>
+      <% end %>
+    </h2>
     <div class="signs-list">
       <div class="sign"><h4>ASC</h4><p><%= Sign.find_by(id: @best_match.astrology_chart.ascendant_id).sign_name %></p></div>
       <div id="sun-sign" class="sign"><h4>SUN</h4><p><%= Sign.find_by(id: @best_match.astrology_chart.sun_id).sign_name %></p></div>
       <div class="sign"><h4>MOON</h4><p><%= Sign.find_by(id: @best_match.astrology_chart.moon_id).sign_name %></p></div>
     </div>
-    <p class="profile-name">
-      <%= link_to user_path(@best_match) do %>
-        <%= @best_match.username %>
-      <% end %>
-    </p>
     <div class="like-buttons">
       <div class="deslike">
         <%= link_to interactions_path(like: false, receiver: @best_match.id), method: :post do %>
@@ -38,7 +38,7 @@
       </div>
       <div class="like">
         <%= link_to interactions_path(like: true, receiver: @best_match.id), method: :post do %>
-          <i class="far fa-heart fas-4x"></i>
+          <i class="fas fa-heart fas-4x"></i>
         <% end %>
       </div>
     </div>

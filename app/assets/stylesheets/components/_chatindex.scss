@@ -17,12 +17,14 @@
 }
 
 .card-product h2 {
+  color: rgba(160,103,176,1);
   font-size: 16px;
   font-weight: bold;
   margin: 0;
 }
 
 .card-product p {
+  color: #000;
   font-size: 14px;
   line-height: 1.4;
   opacity: .7;
@@ -35,6 +37,7 @@
 }
 
 .card-title {
+  color: #fff;
   background-color: rgba(160,103,176,1);
   text-align: center;
   margin-bottom: 0;
