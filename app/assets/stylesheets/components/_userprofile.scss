@@ -8,6 +8,7 @@
   .profile-name {
     font-weight: bolder;
     text-align: center;
+    margin-top: 14px;
   }
   h2 {
     color: rgba(160,103,176,1);
@@ -19,6 +20,7 @@
     text-align: center;
   }
   p {
+    margin-top: 10px;
     font-size: 14px;
     padding: 0 20px;
     text-align: center;
@@ -34,6 +36,9 @@
     height: 100%;
     border-radius: 50%;
     margin: 0;
+  }
+  h6 {
+    text-align: center;
   }
   .signs-list {
     display: flex;
@@ -53,6 +58,7 @@
     display:flex;
     width: 120%;
     justify-content: space-around;
+    margin-top: 20px;
     margin-bottom: 50px;
     color: #fff;
     .deslike {
@@ -96,14 +102,39 @@
 .compatibility-bars {
   align-content: center;
   text-align: center;
-  margin: 50px 0;
+  margin: 10px 0;
+  vertical-align: middle;
   .progress{
-    margin-bottom: 10px;
-    width: 75vw;
+    margin-top: 5px;
+    vertical-align: middle;
+    width: 50vw;
     border-radius: 50px;
     .progress-bar {
       background: linear-gradient(130deg, #a067b0 0%, #7b2398 100%);
-      width: 75vw;
     }
   }
+}
+
+.bars {
+  align-content: center;
+  align-text: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.my-sign-icon img {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+}
+.user-sign-icon img {
+  width: 25px;
+  height: 25px;
+  margin-left: 5px;
+}
+
+.compatibility-bars {
+  display: flex;
+  flex-direction: row;
+  vertical-align: middle
 }

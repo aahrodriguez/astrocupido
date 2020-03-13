@@ -10,6 +10,32 @@
   .profile-name {
     font-weight: bolder;
     text-align: center;
+    margin-top: 14px;
+  }
+  .signs-list {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 75vw;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    h4 {
+      font-size: 16px;
+    }
+    .sign {
+      display: flex;
+      flex-direction: column;
+      border-width: 0.8px;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .sun-sign {
+      display: flex;
+      flex-direction: column;
+      border-width: 0.8px;
+      align-items: center;
+      justify-content: flex-start;
+    }
     h2 {
       color: rgba(160,103,176,1);
     }
@@ -27,65 +53,6 @@
   }
   h2 {
     color: #a067b0;
-  }
-  .signs-list {
-    position: relative;
-    display:flex;
-    width: 70%;
-    justify-content: space-around;
-    text-align: center;
-    margin-bottom: 40px;
-    margin-top: 20px;
-  }
-  .sign {
-    border-style: solid;
-    border-width: 0.8px;
-    border-color: rgba(160,103,176,1);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-  .sign #sun-sign {
-    border-style: solid;
-    border-width: 0.8px;
-    border-color: rgba(160,103,176,1);
-    border-radius: 50%;
-    width: 55px;
-    height: 55px;
-  }
-    #sun-sign {
-          height: 55px;
-          width: 55px;
-          img {
-            margin-top: 4px;
-            margin-bottom: 7px;
-            height: 40px;
-            width: 40px;
-          }
-          .sign-description {
-            margin: 0;
-          }
-        }
-    .sign-description {
-      margin-top: -22px;
-    }
-    img {
-      height: 20px;
-      width: 20px;
-    }
-    h4 {
-      font-size: 15px;
-      text-align: center;
-    }
-    p {
-      margin-top: 14px;
-      font-size: 14px;
-      text-align: center;
-    }
-    a {
-      color: rgba(160,103,176,1);
-    }
   }
   .like-buttons {
     display:flex;
@@ -123,6 +90,54 @@
       i {
         color: #fff;
       }
+    }
+  }
+}
+
+
+
+
+.sign-description {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  .icon-sign {
+    width: 40px;
+    height: 40px;
+    border-style: solid;
+    border-width: 1.2px;
+    border-color: rgba(160,103,176,1);
+    border-radius: 50%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+
+.sign-sun-description {
+  display: flex;
+  object-fit: cover;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  .icon-sun-sign {
+    width: 65px;
+    height: 65px;
+    border-style: solid;
+    border-width: 1.5px;
+    border-color: rgba(160,103,176,1);
+    border-radius: 50%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    img {
+      width: 45px;
+      height: 45px;
     }
   }
 }

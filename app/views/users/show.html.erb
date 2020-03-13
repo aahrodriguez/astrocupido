@@ -30,27 +30,33 @@
             <%= @user.username %>
           <% end %>
         </h1>
-        <h3><%= distance_of_time_in_words(DateTime.now, @user.astrology_chart.birthdate)%></h3>
+        <h5 class="profile-name"><%= distance_of_time_in_words(DateTime.now, @user.astrology_chart.birthdate).capitalize%></h5>
         <p><%= @user.description %></p>
         <h5 class="profile-name"><%= @user.astrology_chart.birth_city %></h5>
-        <div class="compatibility-bars">
-          <h6>
-            Solar compatibility: <%= @sun_percentage %>%
-          </h6>
-          <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: <%= @sun_percentage %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="bars">
+        <h6>Solar compatibility: <%= @sun_percentage %>%</h6>
+          <div class="compatibility-bars">
+            <div class="my-sign-icon"><%= image_tag(current_user.astrology_chart.sun.icon_url) %></div>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: <%= @sun_percentage %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="user-sign-icon"><%= image_tag(@user.astrology_chart.sun.icon_url) %></div>
           </div>
-          <h6>
-            Moon compatibility: <%= @moon_percentage %>%
-          </h6>
-          <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: <%= @moon_percentage %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <h6>Ascendant compatibility: <%= @ascendant_percentage %>%</h6>
+          <div class="compatibility-bars">
+            <div class="my-sign-icon"><%= image_tag(current_user.astrology_chart.ascendant.icon_url) %></div>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: <%= @ascendant_percentage %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="user-sign-icon"><%= image_tag(@user.astrology_chart.sun.icon_url) %></div>
           </div>
-          <h6>
-            Ascendant compatibility: <%= @ascendant_percentage %>%
-          </h6>
-          <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: <%= @ascendant_percentage %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          <h6>Lunar compatibility: <%= @moon_percentage %>%</h6>
+          <div class="compatibility-bars">
+            <div class="my-sign-icon"><%= image_tag(current_user.astrology_chart.moon.icon_url) %></div>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: <%= @moon_percentage %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="user-sign-icon"><%= image_tag(@user.astrology_chart.moon.icon_url) %></div>
           </div>
         </div>
         <div class="like-buttons">
