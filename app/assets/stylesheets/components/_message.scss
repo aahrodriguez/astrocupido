@@ -31,7 +31,7 @@
   padding: 11px 10px 8px 10px;
   vertical-align: center;
   height: 35px;
-  color: white;
+  color: black;
 }
 .avatar {
   width: 42px;
@@ -42,7 +42,6 @@
 #create-message {
   padding: 10px;
   background-color: #ffffff;
-  margin-bottom: 20px;
   border: 1px solid #ececec;
 }
 .message_content {
@@ -105,3 +104,18 @@ input.form-control {
 .user {
   position: relative;
 }
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+
+.chat_footer {
+  background-color: rgba(160,103,176,1);
+}
+

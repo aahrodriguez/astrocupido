@@ -26,13 +26,16 @@
         <%= render "messages/message", message: message, user_is_messages_author: message.from?(current_user) %>
         <% end %>
       </div>
-        <div class="row">
-          <div id="creat-message">
-            <%= simple_form_for [@match, Message.new], class: 'row', remote: true do |f| %>
-            <%= f.input :content, label: false, class: "col-sm-10" %>
-            <%= f.submit label: ">", class: 'col-sm-2'%>
+      <div class="chat_footer">
+        <div id="create-message form-inline">
+          <%= simple_form_for [@match, Message.new],  wrapper: :inline_form,
+            html: { class: "form-inline" }, remote: true do |f| %>
+            <%= f.input :content, label: false, class: "col-12", rows: 1  %>
+            <%= button_tag type: :submit, class: 'profile-btn btn btn-circle' do %>
+               <i class="fas fa-chevron-right"></i>
             <% end %>
-          </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
