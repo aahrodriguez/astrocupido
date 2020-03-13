@@ -42,10 +42,8 @@ class UsersController < ApplicationController
 
   def update_preferences
     @user = User.find(params[:id])
+    raise
     @user.update(user_params)
-    @user.like_man == "0" ? @user.like_man = false : @user.like_man = true
-    @user.like_woman == "0" ? @user.like_woman = false : @user.like_woman = true
-    @user.save
     redirect_to my_profile_path
   end
 

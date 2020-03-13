@@ -28,9 +28,10 @@
             <%= f.input :description, as: :text, autofocus: true, inline_label: 'Descrição', label: false %>
 
             <h5>Mostrar</h5>
-
-            <%= f.input :like_man, as: :boolean, label: 'Homens', input_html: { :checked => true, :unchecked => false } %>
-            <%= f.input :like_woman, as: :boolean, label: 'Mulheres', input_html: { :checked => true, :unchecked => false } %>
+            <%= f.label 'Homens'%>
+            <%= f.check_box :like_man %>
+            <%= f.label 'Mulheres'%>
+            <%= f.check_box :like_woman %>
 
           <%= f.button :submit, "Update" %>
         <% end %>
