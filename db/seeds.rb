@@ -6,7 +6,7 @@ puts 'Creating signs...'
 signs_array = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]
 
 signs_array.each do |sign|
-  Sign.find_or_create_by!(sign_name: sign)
+  Sign.find_or_create_by!(sign_name: sign, icon_url: "images/#{sign}.png")
 end
 puts 'Signs created!'
 
@@ -179,10 +179,7 @@ def get_randomuser
 end
 
 def get_address
-  array_ceps = ["03805-160", "03045-020", "04932-160", "04713-020", "08440-200", "03040-050", "08440-450", "02443-060", "02345-070",
-               "04856-330", "05467-000", "04015-011", "03948-010", "05304-010", "08021-520", "05376-190", "05347-015", "04194-285",
-               "08420-170", "02990-322", "05056-030", "08382-505", "04675-010", "03578-225", "03125-070", "03952-010", "05101-225"
-             ]
+  array_ceps = ["05655-050","05655-020","04532-915","04532-030","04524-911","04522-905","05459-001","05418-010","05433-000","05434-080"]
   cep = array_ceps.sample
   key = "4ed7f5f0f2ccd6cc919b860d606d4b12"
   url = "http://geradorapp.com/index.php/api/v1/cep/search/#{cep}?token=#{key}"
