@@ -10,6 +10,7 @@
   .profile-name {
     font-weight: bolder;
     text-align: center;
+    margin-top: 14px;
   }
   .signs-list {
     display: flex;
@@ -135,8 +136,8 @@
     display: flex;
     justify-content: center;
     img {
-      width: 55px;
-      height: 55px;
+      width: 45px;
+      height: 45px;
     }
   }
 }
