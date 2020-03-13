@@ -29,10 +29,13 @@
     color: #a067b0;
   }
   .signs-list {
+    position: relative;
     display:flex;
     width: 70%;
     justify-content: space-around;
     text-align: center;
+    margin-bottom: 40px;
+    margin-top: 20px;
   }
   .sign {
     border-style: solid;
@@ -41,14 +44,43 @@
     border-radius: 50%;
     width: 40px;
     height: 40px;
+    display: flex;
+    justify-content: center;
+  .sign #sun-sign {
+    border-style: solid;
+    border-width: 0.8px;
+    border-color: rgba(160,103,176,1);
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+  }
+    #sun-sign {
+          height: 55px;
+          width: 55px;
+          img {
+            margin-top: 4px;
+            margin-bottom: 7px;
+            height: 40px;
+            width: 40px;
+          }
+          .sign-description {
+            margin: 0;
+          }
+        }
+    .sign-description {
+      margin-top: -22px;
+    }
+    img {
+      height: 20px;
+      width: 20px;
+    }
     h4 {
-      font-size: 20px;
-      padding: 0 20px;
+      font-size: 15px;
       text-align: center;
     }
     p {
+      margin-top: 14px;
       font-size: 14px;
-      padding: 0 20px;
       text-align: center;
     }
     a {
@@ -95,7 +127,4 @@
   }
 }
 
-#sun-sign {
-      height: 50px;
-      width: 50px;
-    }
+

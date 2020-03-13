@@ -6,7 +6,7 @@ puts 'Creating signs...'
 signs_array = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]
 
 signs_array.each_with_index do |sign, i|
-  Sign.find_or_create_by!(id: i+1, sign_name: sign, icon_url: "images/#{sign}.png")
+  Sign.find_or_create_by!(id: i+1, sign_name: sign, icon_url: "#{sign}.png")
 end
 puts 'Signs created!'
 
