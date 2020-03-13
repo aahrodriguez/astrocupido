@@ -9,9 +9,13 @@
   <% @matches.each do |match| %>
       <%= link_to match_path(match.id) do %>
         <div class="card-product">
-        <div class="sign-chat" id="sign-icon"><h4 id="sign-icon">SUN</h4><div id="sign-icon">icon</div><p sign-icon><%= Sign.find_by(id: User.find_by(id: match.user_two_id).astrology_chart.sun_id).sign_name %></p></div>
+        <div class="sign-chat" id="sign-icon"><h4 id="sign-icon">SUN</h4><div id="sign-icon"> <%= image_tag(match.other_user(current_user).astrology_chart.ascendant.icon_url) %></div><p sign-icon><%= Sign.find_by(id: User.find_by(id: match.user_two_id).astrology_chart.sun_id).sign_name %></p></div>
           <%= link_to match_path(match.id) do %>
-            <%= cl_image_tag User.find_by(id: match.user_two_id).avatar.key, height: 200, width: 200, crop: :thumb, gravity: :face %>
+            <% if match.other_user(current_user).avatar.attached? %>
+              <%= cl_image_tag match.other_user(current_user).avatar.key, class: "avatar", crop: :thumb, gravity: :face %>
+             <% else %>
+              <%= cl_image_tag "https://res.cloudinary.com/dgeodyyf7/image/upload/v1583239038/astroloja-01_mwidxw.jpg", crop: :fill %>
+            <% end %>
             <div class="card-product-infos">
               <% if match.user_one == current_user %>
                   <h2> <%= match.user_two.username %></h2>
