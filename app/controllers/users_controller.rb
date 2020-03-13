@@ -42,7 +42,6 @@ class UsersController < ApplicationController
 
   def update_preferences
     @user = User.find(params[:id])
-    raise
     @user.update(user_params)
     redirect_to my_profile_path
   end

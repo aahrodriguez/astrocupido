@@ -28,12 +28,13 @@
             <%= f.input :description, as: :text, autofocus: true, inline_label: 'Descrição', label: false %>
 
             <h5>Mostrar</h5>
-            <%= f.label 'Homens'%>
-            <%= f.check_box :like_man %>
-            <%= f.label 'Mulheres'%>
-            <%= f.check_box :like_woman %>
-
-          <%= f.button :submit, "Update" %>
+            <div>
+              <%= f.label 'Homens'%>
+              <%= f.check_box :like_man %>
+              <%= f.label 'Mulheres'%>
+              <%= f.check_box :like_woman %>
+            </div>
+          <%= f.button :submit, "Update", class:"btn profile-btn col-sm-4 mt-1" %>
         <% end %>
       </div>
   </div>

@@ -1,7 +1,6 @@
 <div class="mobile-container">
   <div class="margin-container">
-    <h2><%= @user.username.capitalize %>, você deseja editar suas informações?</h2>
-
+    <h4>Editar Configurações</h4>
     <%= simple_form_for(@user, as: @user, url: edit_my_user_path, html: { method: :put }) do |f| %>
       <%= f.error_notification %>
 
@@ -28,7 +27,7 @@
                     input_html: { autocomplete: "current-password" } %>
 
 
-      <%= f.button :submit, "Update" %>
+      <%= f.button :submit, "Update", class:"btn profile-btn col-sm-4 mt-1" %>
     <% end %>
   </div>
 </div>
