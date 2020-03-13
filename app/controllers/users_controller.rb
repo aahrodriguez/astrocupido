@@ -6,8 +6,9 @@ class UsersController < ApplicationController
     users =  users.reject { |user| user.interactions.pluck(:sender_id).include? current_user.id }
 
     users = users.sort_by { |user| current_user.match_percentage(user) }
+
     @best_match = users.first
-    @match_percentage = current_user.match_percentage(@best_match)
+    @match_percentage = current_user.match_percentage(@best_match) if @best_match.present?
   end
 
   def show

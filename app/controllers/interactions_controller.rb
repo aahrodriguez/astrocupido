@@ -9,7 +9,7 @@ class InteractionsController < ApplicationController
     @interaction.receiver_id = params[:receiver]
     @interaction.like = params[:like]
       if @interaction.save
-        like_interaction = Interaction.where(sender_id: params[:receiver], receiver: current_user, like: true)
+        like_interaction = Interaction.where(sender_id: params[:receiver], receiver: current_user, like: true).any?
         if like_interaction && @interaction.like
           @match = Match.create(user_one_id: current_user.id, user_two_id: params[:receiver])
         end

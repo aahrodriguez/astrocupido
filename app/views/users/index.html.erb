@@ -1,5 +1,5 @@
 <% if @best_match.nil? %>
-  <% render "end" %>
+  <%= render "end" %>
 <% else %>
   <div class="profile-container">
     <h2 class="profile-name">
@@ -27,7 +27,7 @@
     </h2>
     <div class="signs-list">
       <div class="sign"><h4>ASC</h4><p><%= Sign.find_by(id: @best_match.astrology_chart.ascendant_id).sign_name %></p></div>
-      <div id="sun-sign" class="sign"><h4>SUN</h4><p><%= Sign.find_by(id: @best_match.astrology_chart.sun_id).sign_name %></p></div>
+        <div id="sun-sign" class="sign"><h4>SUN</h4><p><%= Sign.find_by(id: @best_match.astrology_chart.sun_id).sign_name %></p></div>
       <div class="sign"><h4>MOON</h4><p><%= Sign.find_by(id: @best_match.astrology_chart.moon_id).sign_name %></p></div>
     </div>
     <div class="like-buttons">

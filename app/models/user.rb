@@ -8,9 +8,11 @@ class User < ApplicationRecord
   validates :username, presence: true
   has_one_attached :avatar
   has_many_attached :photos
-  has_many :interactions, dependent: :destroy
   belongs_to :state, optional: true
   has_one :astrology_chart, dependent: :destroy
+  has_many :matches, dependent: :destroy
+  has_many :interactions, dependent: :destroy
+
 
   def matches
     # current_user.matches ==> Match.where(user_one: current_user).or(user_two: current_user)
