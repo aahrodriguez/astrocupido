@@ -33,9 +33,9 @@
           <p><%= Sign.find_by(id: @best_match.astrology_chart.ascendant_id).sign_name %></p>
         </div>
       </div>
-      <div id="sun-sign">
+      <div class="sign">
         <div class="icon-sign">
-          <div class="sign-description">
+          <div id="sun-sign" class="sign-description">
             <h4>SUN</h4>
             <div><%= image_tag(@best_match.astrology_chart.sun.icon_url) %></div>
             <%= Sign.find_by(id: @best_match.astrology_chart.sun_id).sign_name %>
