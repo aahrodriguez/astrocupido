@@ -1,16 +1,11 @@
 <div class="mobile-container">
   <div class="margin-container">
+    <h3>Recalcular Mapa</h3>
     <%= simple_form_for @astrology_chart do |f| %>
-
-     <%= f.input :birthdate, input_html: { class: "datepicker" }, as: :string %>
-
+      <%= f.input :birthdate, input_html: { class: "datepicker" }, as: :string %>
       <%= f.input :birth_city %>
-
       <%= f.input :state_id, collection: @states %>
-
-
-      <%= f.submit %>
-
+      <%= f.button :submit, "Update", class:"btn profile-btn col-sm-4 " %>
     <% end %>
   </div>
 </div>
