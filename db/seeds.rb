@@ -5,16 +5,16 @@ puts 'Creating memory...'
 puts 'Creating signs...'
 signs_array = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]
 
-signs_array.each do |sign|
-  Sign.find_or_create_by!(sign_name: sign, icon_url: "images/#{sign}.png")
+signs_array.each_with_index do |sign, i|
+  Sign.find_or_create_by!(id: i+1, sign_name: sign, icon_url: "images/#{sign}.png")
 end
 puts 'Signs created!'
 
 puts "Create Brazilian states"
 
 states_array = ["Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"]
-states_array.each do |state_br|
-  State.find_or_create_by!(state_name: state_br)
+states_array.each_with_index do |state_br, i|
+  State.find_or_create_by!(id: i+1, state_name: state_br)
 end
 
 puts "Brazilian states created"
@@ -185,6 +185,10 @@ def get_address
   url = "http://geradorapp.com/index.php/api/v1/cep/search/#{cep}?token=#{key}"
   user_serialized = open(url).read
   user_parsed = JSON.parse(user_serialized)
+  if user_parsed['data']['address'] == nil
+    puts 'o cep que quebrou foi o ' + cep
+    raise
+  end
   info_cep = user_parsed['data']
   info_cep
 end
