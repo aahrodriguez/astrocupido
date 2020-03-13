@@ -10,6 +10,11 @@
 
         <%= f.input :username %>
 
+        <%= f.input :current_address,
+                    hint: "change your current address here",
+                    required: false,
+                    input_html: { autocomplete: "current address" } %>
+
         <%= f.input :password,
                     hint: "leave it blank if you don't want to change it",
                     required: false,
