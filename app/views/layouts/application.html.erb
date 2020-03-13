@@ -3,11 +3,20 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Astrocupido</title>
+
+    <meta name="description" content="AstroMatch is a plataform to find the love of your life based in yor astral chart.... Discover what was written in the STARS">
+
+    <meta property="og:title" content="AstroMatch - Discover what was written in the STARS">
+    <meta property="og:image" content="astroloja-03.png">
+    <meta property="og:description" content= "AstroMatch is a plataform to find the love of your life based in yor astral chart.... Discover what was written in the STARS">
+    <meta property="og:site_name" content="AstroMatch"/>
+
+    <title>AstroMatch... Discover what was written in the STARS</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+    <%= favicon_link_tag asset_path('star.png') %>
   </head>
   <body>
     <% if user_signed_in? %>
