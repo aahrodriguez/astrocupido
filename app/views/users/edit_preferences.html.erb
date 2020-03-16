@@ -1,16 +1,13 @@
-<div class="mobile-container">
-  <div class="margin-container">
+<div class="preferences-form-inputs">
+  <div class="profile-user-container">
     <h2>Editar Preferências</h2>
-    <div class="form-inputs">
-      <div class="profile-user-container">
         <% if @user.avatar.attached? %>
             <%= cl_image_tag @user.avatar.key, height: 200, width: 200, crop: :thumb, gravity: :face %>
         <% elsif @user.gender == "male" %>
             <img src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866471/rqujcnufwkhrrkmdgkku.png" alt="<% @user.id %>">
         <% else %>
-            <img src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866457/hj6sf5ea59kq5xhi19ew.png" alt="<% @user.id %>">
+            <img src="https://res.cloudinary.com/dgeodyyf7/image/upload/v1584325494/Astromatch_Elementos-20_njbszk.png" alt="<% @user.id %>">
         <% end %>
-      </div>
         <%= simple_form_for(@user, as: @user, url: my_preferences_path, html: { method: :put }) do |f| %>
           <%= hidden_field_tag 'id', @user.id %>
           <%= f.error_notification %>
@@ -39,3 +36,4 @@
       </div>
   </div>
 </div>
+

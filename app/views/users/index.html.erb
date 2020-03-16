@@ -2,7 +2,7 @@
   <%= render "end" %>
 <% else %>
   <div class="profile-container">
-    <h2 class="profile-name">
+    <h2 id="percentage-user" class="profile-name">
       <%= @match_percentage %>%
     </h2>
     <div class="profile-photo">
@@ -16,7 +16,7 @@
         <% end %>
       <% else %>
         <%= link_to user_path(@best_match) do %>
-          <img src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866457/hj6sf5ea59kq5xhi19ew.png" alt="<% @best_match.id %>">
+          <img src="https://res.cloudinary.com/dgeodyyf7/image/upload/v1584325494/Astromatch_Elementos-20_njbszk.png" alt="<% @best_match.id %>">
         <% end %>
       <% end %>
     </div>
@@ -30,14 +30,14 @@
         <div class="sign-description">
           <h4>ASC</h4>
           <div class="icon-sign"><%= image_tag(@best_match.astrology_chart.ascendant.icon_url) %></div>
-          <p><%= Sign.find_by(id: @best_match.astrology_chart.ascendant_id).sign_name %></p>
+          <div class="icon-sign-text"><p><%= Sign.find_by(id: @best_match.astrology_chart.ascendant_id).sign_name %></p></div>
         </div>
       </div>
       <div class="sun-sign">
         <div class="sign-sun-description">
           <h4>SUN</h4>
           <div class="icon-sun-sign"><%= image_tag(@best_match.astrology_chart.sun.icon_url) %></div>
-          <%= Sign.find_by(id: @best_match.astrology_chart.sun_id).sign_name %>
+          <p><%= Sign.find_by(id: @best_match.astrology_chart.sun_id).sign_name %></p>
         </div>
       </div>
       <div class="sign">
