@@ -23,7 +23,7 @@
       </div>
       <div class="messages">
         <% @match.messages.each do |message| %>
-        <%= render "messages/message", message: message, user_is_messages_author: message.from?(current_user) %>
+          <%= render "messages/message", message: message, user_is_messages_author: message.from?(current_user) %>
         <% end %>
       </div>
       <div class="chat_footer">
