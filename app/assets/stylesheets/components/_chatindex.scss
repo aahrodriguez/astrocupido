@@ -13,7 +13,7 @@
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 0;
-  margin-left: 20px;
+  margin-left: -25px;
   vertical-align: middle;
 }
 
@@ -49,16 +49,25 @@
   }
 }
 
-.sign-chat {
+.icon-sign-chat {
   border-radius: 50%;
-  background-color: #ab136b;
-  width: 40px;
-  height: 40px;
-  margin-left: 20px;
-  position: absolute;
-  justify-content: space-around;
+  border-style: solid;
+  border-width: 1.5px;
+  border-color: #ab136b;
+  width: 45px;
+  height: 45px;
+  justify-content: center;
   text-align: center;
   color: #7b2398;
+  margin-left: 20px;
+  img {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 45px;
+    height: 45px;
+    margin-left: -2px;
+  }
 }
 
 #sign-icon {

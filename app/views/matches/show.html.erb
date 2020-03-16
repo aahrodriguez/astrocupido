@@ -3,18 +3,12 @@
     <div class="col-sm-6 col-sm-offset-3 altura">
       <div class="chat-header">
         <div class="row justify-content-around">
-          <div>
-            <h4><%= link_to matches_path, class: "voltar" do  %>
-              <i class="fas fa-chevron-left"></i>
-            <% end %>
-              </h4>
-          </div>
-          <div>
+          <div class="chat-username-name">
             <h4><%= link_to @match.other_user(current_user).username.downcase.capitalize, user_path(@match.other_user(current_user).id), class: "name" %></h4>
           </div>
-          <div>
+          <div class="profile-photo-chat">
             <% if @match.other_user(current_user).avatar.attached? %>
-              <h4> <%= cl_image_tag @match.other_user(current_user).avatar.key, height: 200, width: 200, crop: :thumb, gravity: :face %></h4>
+              <h4> <%= cl_image_tag @match.other_user(current_user).avatar.key, height: 42, width: 42, crop: :thumb, gravity: :face %></h4>
             <% else %>
               <h4> <%= cl_image_tag "https://res.cloudinary.com/dgeodyyf7/image/upload/v1583239038/astroloja-01_mwidxw.jpg", crop: :fill, class: "avatar" %></h4>
             <% end %>

@@ -1,6 +1,6 @@
 <div class="message <%= "right" if user_is_messages_author %>">
   <% if message.sender.avatar.attached? %>
-    <%= cl_image_tag User.find_by(id: message.sender.id).avatar.key, height: 200, width: 200, crop: :thumb, gravity: :face %>
+    <%= cl_image_tag User.find_by(id: message.sender.id).avatar.key, height: 42, width: 42, crop: :thumb, gravity: :face %>
   <% else %>
     <%= cl_image_tag "https://res.cloudinary.com/dgeodyyf7/image/upload/v1583239038/astroloja-01_mwidxw.jpg", crop: :fill, class: "avatar" %>
   <% end %>

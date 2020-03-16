@@ -10,7 +10,7 @@
   <% @matches.each do |match| %>
       <%= link_to match_path(match.id) do %>
         <div class="card-product">
-        <div class="sign-chat" id="sign-icon"><div id="sign-icon-2"> <%= image_tag(match.other_user(current_user).astrology_chart.ascendant.icon_url) %></div></div>
+          <div class="icon-sign-chat"> <%= image_tag(match.other_user(current_user).astrology_chart.ascendant.icon_url) %></div>
           <%= link_to match_path(match.id) do %>
             <% if match.other_user(current_user).avatar.attached? %>
               <%= cl_image_tag match.other_user(current_user).avatar.key, class: "avatar", crop: :thumb, gravity: :face %>
