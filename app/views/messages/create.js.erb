@@ -1,4 +1,6 @@
-var messagesContainer = document.querySelector('.messages');
-messagesContainer.insertAdjacentHTML('beforeend', '<%= j render "messages/message", message: @message, user_is_messages_author: true %>');
-document.getElementById('message_content').value = "";
-scrollLastMessageIntoView();
+<% if @message.errors.count.zero? %>
+  var messagesContainer = document.querySelector('.messages');
+  messagesContainer.insertAdjacentHTML('beforeend', '<%= j render "messages/message", message: @message, user_is_messages_author: true %>');
+  document.getElementById('message_content').value = "";
+  scrollLastMessageIntoView();
+<% end %>
