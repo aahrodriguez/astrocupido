@@ -1,5 +1,4 @@
-<div class="mobile-container">
-  <div class="margin-container">
+
     <div class="my-user-profile-container">
         <div class="profile-photo">
           <% if @user.avatar.attached? %>
@@ -8,18 +7,18 @@
             <% end %>
           <% elsif @user.gender == "male" %>
             <%= link_to my_profile_path do %>
-              <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866471/rqujcnufwkhrrkmdgkku.png" alt="<% @user.id %>">
+              <img src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866471/rqujcnufwkhrrkmdgkku.png" alt="<% @user.id %>">
             <% end %>
           <% else %>
             <%= link_to my_profile_path do %>
-              <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866457/hj6sf5ea59kq5xhi19ew.png" alt="<% @user.id %>">
+              <img src="https://res.cloudinary.com/dgeodyyf7/image/upload/v1584325494/Astromatch_Elementos-20_njbszk.png" alt="<% @user.id %>">
             <% end %>
           <% end %>
         </div>
         <h2 class="profile-name"><%= @user.username.capitalize %></h2>
-        <h2><%= distance_of_time_in_words(DateTime.now, @user.astrology_chart.birthdate)%></h2>
+        <h3><%= distance_of_time_in_words(DateTime.now, @user.astrology_chart.birthdate)%></h3>
         <p><%= @user.description %></p>
-        <p><%= @user.gender %></p>
+        <p>(<%= @user.gender.capitalize %>)</p>
         <div class="profile-buttons">
           <div class="row">
             <%= link_to "Preferencias", edit_my_preferences_path(current_user), class:"profile-btn btn col-sm-4" %>
@@ -28,6 +27,5 @@
           </div>
         </div>
     </div>
-  </div>
-</div>
+
 

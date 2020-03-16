@@ -1,5 +1,4 @@
-<div class="mobile-container">
-  <div class="margin-container">
+<div class="edit-config-container">
     <h4>Editar Configurações</h4>
     <%= simple_form_for(@user, as: @user, url: edit_my_user_path, html: { method: :put }) do |f| %>
       <%= f.error_notification %>
@@ -29,5 +28,4 @@
 
       <%= f.button :submit, "Update", class:"btn profile-btn col-sm-4 mt-1" %>
     <% end %>
-  </div>
 </div>

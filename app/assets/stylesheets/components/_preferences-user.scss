@@ -1,0 +1,64 @@
+.preferences-form-inputs .preferences-form {
+    display: block;
+    margin-top: 45px;
+}
+
+.profile-user-container .preferences-form-inputs {
+    align-content: center;
+    width: 75vw;
+    height: auto;
+    border-radius: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.preferences-form-inputs .form-control.is-valid {
+    border-radius: 50px;
+}
+
+.preferences-form-inputs .form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 40px;
+    -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.preferences-form-inputs .form-group input {
+  color: #ab136b;
+}
+
+.preferences-form-inputs input {
+  color: #fff;
+}
+
+.preferences-form-inputs label {
+  color: #fff;
+}
+
+.preferences-form-inputs input[type="checkbox"] {
+    box-sizing: border-box;
+    padding: 0;
+    border-radius: 50px;
+    margin-right: 10px;
+}
+
+.preferences-btn {
+  font-family: "Sen", sans-serif;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  background: linear-gradient(130deg, #ab136b 0%, #7b2398 100%);
+  margin-bottom: 18px;
+  padding: 10px 0;
+  border-radius: 50px;
+}

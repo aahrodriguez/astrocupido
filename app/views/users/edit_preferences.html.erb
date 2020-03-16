@@ -1,41 +1,42 @@
-<div class="mobile-container">
-  <div class="margin-container">
+<div class="profile-user-container">
+  <div class="preferences-form-inputs">
     <h2>Editar Preferências</h2>
-    <div class="form-inputs">
-      <div class="profile-user-container">
         <% if @user.avatar.attached? %>
             <%= cl_image_tag @user.avatar.key, height: 200, width: 200, crop: :thumb, gravity: :face %>
         <% elsif @user.gender == "male" %>
             <img src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866471/rqujcnufwkhrrkmdgkku.png" alt="<% @user.id %>">
         <% else %>
-            <img src="https://res.cloudinary.com/depkgd9tg/image/upload/v1583866457/hj6sf5ea59kq5xhi19ew.png" alt="<% @user.id %>">
+            <img src="https://res.cloudinary.com/dgeodyyf7/image/upload/v1584325494/Astromatch_Elementos-20_njbszk.png" alt="<% @user.id %>">
         <% end %>
-      </div>
-        <%= simple_form_for(@user, as: @user, url: my_preferences_path, html: { method: :put }) do |f| %>
-          <%= hidden_field_tag 'id', @user.id %>
-          <%= f.error_notification %>
+        <div class="preferences-form">
+          <%= simple_form_for(@user, as: @user, url: my_preferences_path, html: { method: :put }) do |f| %>
+            <%= hidden_field_tag 'id', @user.id %>
+            <%= f.error_notification %>
 
-            <h5>Orientação sexual</h5>
+              <h5>Mudar foto perfil:</h5>
 
-            <%= f.input :gender, inline_label: 'avatar', label: false, collection: ["male", "female"] %>
+              <%= f.input :avatar, as: :file, inline_label: 'avatar', label: false %>
 
-            <h5>Mudar foto perfil:</h5>
+              <h5>Orientação sexual</h5>
 
-            <%= f.input :avatar, as: :file, inline_label: 'avatar', label: false %>
+              <%= f.input :gender, inline_label: 'avatar', label: false, collection: ["male", "female"] %>
 
-            <h5>Descrição</h5>
 
-            <%= f.input :description, as: :text, autofocus: true, inline_label: 'Descrição', label: false %>
+              <h5>Descrição</h5>
 
-            <h5>Mostrar</h5>
-            <div>
-              <%= f.label 'Homens'%>
-              <%= f.check_box :like_man %>
-              <%= f.label 'Mulheres'%>
-              <%= f.check_box :like_woman %>
-            </div>
-          <%= f.button :submit, "Update", class:"btn profile-btn col-sm-4 mt-1" %>
-        <% end %>
+              <%= f.input :description, as: :text, autofocus: true, inline_label: 'Descrição', label: false %>
+
+              <h5>Mostrar</h5>
+              <div>
+                <%= f.label 'Homens'%>
+                <%= f.check_box :like_man %>
+                <%= f.label 'Mulheres'%>
+                <%= f.check_box :like_woman %>
+              </div>
+            <%= f.button :submit, "Update", class:"btn preferences-btn col-sm-4 mt-1" %>
+          <% end %>
+        </div>
       </div>
   </div>
 </div>
+
