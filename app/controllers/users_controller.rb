@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def index
     # Pra nao quebrar na master, linha nao esta correta
+    raise
     users = User.where.not(id: current_user.id).joins('LEFT JOIN interactions ON interactions.sender_id = users.id OR interactions.receiver_id = users.id')
     users =  users.reject { |user| user.interactions.pluck(:sender_id).include? current_user.id }
 
