@@ -8,6 +8,7 @@
   border-bottom-width: 0;
   max-height: calc(100vh - 70px - 45px - 61px - 30px);
   overflow: scroll;
+  min-height: 100vh;
 }
 
 .message {
@@ -16,7 +17,7 @@
   &.right {
     flex-direction: row-reverse;
     .message-content {
-      background-color: #E3D3CC;
+      background-color: #7b2398;
       color: white;
       max-width: 215px;
       word-wrap: break-word;
@@ -25,13 +26,13 @@
   }
 }
 .message-content {
-  background-color: rgba(160,103,176,1);
+  background-color: #ab136b;
   border-radius: 3px;
   margin: 0 10px;
   padding: 11px 10px 8px 10px;
   vertical-align: center;
   height: 35px;
-  color: black;
+  color: white;
 }
 .avatar {
   width: 42px;
@@ -65,8 +66,8 @@ input.form-control {
 .chat-header {
   background: linear-gradient(130deg, rgba(160,103,176,1) 0%, rgba(123,35,152,1) 100%);
   color: white;
-  padding: 10px 20px;
-  margin-top: 10px;
+
+
   h4 {
     margin: 0;
   }
@@ -126,4 +127,11 @@ input.form-control {
 
 .marcele {
 
+}
+
+
+.altura {
+  height: 100 vh;
+  padding-left: 0px;
+  padding-right: 0px;
 }
