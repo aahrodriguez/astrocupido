@@ -10,7 +10,7 @@
   background-image: url(form-background.png);
   background-size: 100%;
   text-align: center;
-  padding: 30px 15px;
+  padding: 15px 15px;
   .form-group {
     margin-bottom: 0.5rem;
   }
@@ -18,8 +18,8 @@
 
 .astrology-chart-container img {
   width: 70vw;
-  margin-top: -25px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .astrology-chart-container .profile-btn {
@@ -28,6 +28,11 @@
     padding: 10px 0;
     border-radius: 50px;
     color: white;
+}
+
+.astrology-chart-container form {
+    display: block;
+    margin-top: 1.2em;
 }
 
 .astrology-chart-container label {
@@ -61,6 +66,5 @@
 
 .astrology-chart-container h3 {
   font-size: 1.90rem;
-  margin-bottom: 30px;
   color: #fff;
 }
