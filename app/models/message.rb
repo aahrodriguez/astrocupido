@@ -15,6 +15,7 @@ class Message < ApplicationRecord
         locals: { message: self, user_is_messages_author: false }
       ),
       current_user_id: sender.id
-    }
+      }
+    )
   end
 end
