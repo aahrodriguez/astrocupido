@@ -1,6 +1,6 @@
 <div class="profile-user-container">
   <div class="preferences-form-inputs">
-    <h2>Editar Preferências</h2>
+    <h2>Edit Preferences</h2>
         <% if @user.avatar.attached? %>
             <%= cl_image_tag @user.avatar.key, height: 200, width: 200, crop: :thumb, gravity: :face %>
         <% elsif @user.gender == "male" %>
@@ -13,24 +13,24 @@
             <%= hidden_field_tag 'id', @user.id %>
             <%= f.error_notification %>
 
-              <h5>Mudar foto perfil:</h5>
+              <h5>Change profile photo:</h5>
 
               <%= f.input :avatar, as: :file, inline_label: 'avatar', label: false %>
 
-              <h5>Orientação sexual</h5>
+              <h5>Gender:</h5>
 
               <%= f.input :gender, inline_label: 'avatar', label: false, collection: ["male", "female"] %>
 
 
-              <h5>Descrição</h5>
+              <h5>Description:</h5>
 
               <%= f.input :description, as: :text, autofocus: true, inline_label: 'Descrição', label: false %>
 
-              <h5>Mostrar</h5>
+              <h5>Preferences:</h5>
               <div>
-                <%= f.label 'Homens'%>
+                <%= f.label 'Man'%>
                 <%= f.check_box :like_man %>
-                <%= f.label 'Mulheres'%>
+                <%= f.label 'Woman'%>
                 <%= f.check_box :like_woman %>
               </div>
             <%= f.button :submit, "Update", class:"btn preferences-btn col-sm-4 mt-1" %>
