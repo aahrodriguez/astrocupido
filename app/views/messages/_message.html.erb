@@ -1,8 +1,11 @@
 <div class="message <%= "right" if user_is_messages_author %>">
+
   <% if message.sender.avatar.attached? %>
-    <%= cl_image_tag User.find_by(id: message.sender.id).avatar.key, height: 42, width: 42, crop: :thumb, gravity: :face %>
+    <%= cl_image_tag User.find_by(id: match.user_two_id).avatar.key, height: 42, width: 42, crop: :thumb, gravity: :face %>
+  <% elsif User.find_by(id: match.user_two_id).gender == "male" %>
+    <%= cl_image_tag "https://res.cloudinary.com/dgeodyyf7/image/upload/v1584325494/Astromatch_Elementos-19_eufk6s.png", crop: :fill, class: "avatar" %>
   <% else %>
-    <%= cl_image_tag "https://res.cloudinary.com/dgeodyyf7/image/upload/v1583239038/astroloja-01_mwidxw.jpg", crop: :fill, class: "avatar" %>
+    <%= cl_image_tag "https://res.cloudinary.com/dgeodyyf7/image/upload/v1584325494/Astromatch_Elementos-20_njbszk.png", crop: :fill, class: "avatar" %>
   <% end %>
   <div class="message-content"> <%= message.content %></div>
 </div>

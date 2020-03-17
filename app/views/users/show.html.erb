@@ -14,13 +14,13 @@
             <% end %>
             <%#= cl_image_tag @user.avatar.key, height: 200, width: 200, crop: :thumb, gravity: :face %>
           <% end %>
-          <% elsif @best_match.gender == "male" %>
-            <%= link_to user_path(@best_match) do %>
-              <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/dgeodyyf7/image/upload/v1584325494/Astromatch_Elementos-19_eufk6s.png" alt="<% @best_match.id %>">
+          <% elsif @user.gender == "male" %>
+            <%= link_to user_path(@user) do %>
+              <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/dgeodyyf7/image/upload/v1584325494/Astromatch_Elementos-19_eufk6s.png" alt="<% @user.id %>">
             <% end %>
           <% else %>
-            <%= link_to user_path(@best_match) do %>
-              <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/dgeodyyf7/image/upload/v1584325494/Astromatch_Elementos-20_njbszk.png" alt="<% @best_match.id %>">
+            <%= link_to user_path(@user) do %>
+              <img class="d-block" id="image-carousel" src="https://res.cloudinary.com/dgeodyyf7/image/upload/v1584325494/Astromatch_Elementos-20_njbszk.png" alt="<% @user.id %>">
             <% end %>
         <% end %>
         </div>
