@@ -1,5 +1,6 @@
 <% if @matches.empty? %>
   <div class="card-product">
+
       <div class="card-product-infos">
       <h2>You don't have any matches yet.</h2>
   </div>
@@ -10,12 +11,16 @@
   <% @matches.each do |match| %>
       <%= link_to match_path(match.id) do %>
         <div class="card-product">
-          <div class="icon-sign-chat"> <%= image_tag(match.other_user(current_user).astrology_chart.ascendant.icon_url) %></div>
           <%= link_to match_path(match.id) do %>
             <% if match.other_user(current_user).avatar.attached? %>
+              <div class="icon-sign-chat"><%= image_tag(match.other_user(current_user).astrology_chart.ascendant.icon_url) %></div>
               <%= cl_image_tag match.other_user(current_user).avatar.key, class: "avatar", crop: :thumb, gravity: :face %>
-             <% else %>
-              <%= cl_image_tag "https://res.cloudinary.com/dgeodyyf7/image/upload/v1583239038/astroloja-01_mwidxw.jpg", crop: :fill %>
+            <% elsif match.gender == "male" %>
+              <div class="icon-sign-chat"><%= image_tag(match.other_user(current_user).astrology_chart.ascendant.icon_url) %></div>
+              <%= cl_image_tag "https://res.cloudinary.com/dgeodyyf7/image/upload/v1584325494/Astromatch_Elementos-19_eufk6s.png", crop: :fill, class: "avatar" %>
+            <% else %>
+              <div class="icon-sign-chat"><%= image_tag(match.other_user(current_user).astrology_chart.ascendant.icon_url) %></div>
+              <%= cl_image_tag "https://res.cloudinary.com/dgeodyyf7/image/upload/v1584325494/Astromatch_Elementos-20_njbszk.png", crop: :fill, class: "avatar" %>
             <% end %>
             <div class="card-product-infos">
               <% if match.user_one == current_user %>
