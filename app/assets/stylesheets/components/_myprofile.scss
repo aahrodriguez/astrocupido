@@ -14,7 +14,7 @@
     width: 300px;
   }
   h2 {
-    margin-top: 30px;
+    margin-top: 10px;
     color: #fff;
   }
   h3 {
@@ -53,6 +53,7 @@
   }
 }
 
+
 .profile-buttons {
   display:flex;
   width: 100%;
@@ -71,3 +72,32 @@
   height: 100 vh;
 }
 
+.my-user-profile-container .signs-list {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 75vw;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    h4 {
+      font-size: 16px;
+      color: #fff;
+    }
+    .sign {
+      display: flex;
+      flex-direction: column;
+      border-width: 0.8px;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .sun-sign {
+      display: flex;
+      flex-direction: column;
+      border-width: 0.8px;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    h2 {
+      color: #ab136b;
+    }
+  }
